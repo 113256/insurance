@@ -328,6 +328,124 @@ function extractJSONString(response) {
     throw new Error('JSON object not found in the response.');
   }
 }
+
+
+async function processPromptDataCustomToken(prompt, jsonFormat, max_tokens) {
+  console.log("Process prompt Data " +prompt);  
+  const scriptPath = "extractDetailsPrompt.txt";
+ 
+  const maxRetries = 10; // You can adjust the number of retries as needed
+  let retryCount = 0;
+  let success = false;
+
+while (!success && retryCount < maxRetries) {
+  try {
+    
+
+  
+  
+  /*
+
+  */
+//model: "gpt-4-1106-preview",
+//gpt-3.5-turbo-1106
+//NEW FEATURE IN GPT4 = JSON MODE
+//---  add this to the request to make responses in JSON only  !!!  response_format={"type": "json_object"}
+  
+  
+  var data;
+  /*
+      const headers = {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer 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"
+    };
+  if (jsonFormat){
+       data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      model: "gpt-3.5-turbo-16k",
+      response_format:{"type": "json_object"},
+      temperature: 0.5,
+      max_tokens: 4000
+    });
+    
+  }else{
+        data = JSON.stringify({
+        messages: [{"role": "user", "content": prompt}],
+        model: "gpt-3.5-turbo-16k",
+        temperature: 0.5,
+        max_tokens: 4000
+      });
+    
+  }
+   const response = await fetch("https://api.openai.com/v1/chat/completions", {
+     method: "POST",
+     headers: headers,
+     body: data
+    });
+  console.log(response);
+    const responseData = await response.json();
+  */
+       const headers = {
+      "Content-Type": "application/json",
+      "api-key": "dc9c7f26d3b047a58ce8bfedd2db8eab"
+    };
+  if (jsonFormat){
+       data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      response_format:{"type": "json_object"},
+      temperature: 0,
+      max_tokens: max_tokens
+    });
+    
+  }else{
+    data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      temperature: 0,
+      max_tokens:max_tokens
+  });
+  }
+  const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/GPT-4-8k/chat/completions?api-version=2023-07-01-preview", {
+     method: "POST",
+     headers: headers,
+     body: data
+    });
+  console.log(response);
+    const responseData = await response.json();
+  
+    
+  //https://api.openai.com/v1/chat/completions
+  
+  
+  
+    console.log("RES:"+responseData.toString());
+
+    var responseContent = responseData.choices[0].message.content;
+    //console.log("OLD = "+ responseContent);
+  
+  //responseContent = extractJSONString(responseContent);
+  //console.log("NEW "+responseContent);
+
+  
+  // If the above operations succeed, mark the process as successful
+    success = true;
+
+    // All data rows are inserted successfully
+    //return Promise.resolve();
+  return responseContent;
+  } catch (err) {
+    console.error('Error processing prompt data:', err);
+  await sleep(10000); // 5000 milliseconds = 5 seconds
+      retryCount++;
+    //throw err;
+  }
+}
+  if (!success) {
+    console.error('Failed after multiple retries. Aborting.');
+    // Optionally, you can throw an error here or perform any other action.
+    throw new Error('Failed after multiple retries. Aborting.');
+    }
+}
+
 async function processPromptData(prompt, jsonFormat) {
   console.log("Process prompt Data " +prompt);	
   const scriptPath = "extractDetailsPrompt.txt";
@@ -515,7 +633,7 @@ app.post('/answerQuestion', async (req, res) => {
 	
 	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner: "+clientAnswer+",\.  answer MUST be in chinese";
 
-	var result = await processPromptData(prompt,false);
+	var result = await processPromptDataCustomToken  (prompt,false,1000);
 	console.log(result);
 	return res.status(200).send(result);
 	
