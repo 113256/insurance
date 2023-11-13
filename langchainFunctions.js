@@ -209,7 +209,7 @@ async function langchainProcessOneQuestion(filePath, question){
 
     // 12. Initialize the OpenAI language model
     const model = new OpenAI({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	});
 
     let vectorStore;
@@ -222,7 +222,7 @@ async function langchainProcessOneQuestion(filePath, question){
       vectorStore = await HNSWLib.load(
         VECTOR_STORE_PATH,
         new OpenAIEmbeddings({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	})
       );;
       console.log("Vector store loaded.");
