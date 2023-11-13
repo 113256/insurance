@@ -126,7 +126,7 @@ async function langchainCreateVectorStore(filePath){
   if (cost <= 1) {
     // 12. Initialize the OpenAI language model
     const model = new OpenAI({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	});
 
     let vectorStore;
@@ -143,7 +143,7 @@ async function langchainCreateVectorStore(filePath){
       vectorStore = await HNSWLib.fromDocuments(
         splitDocs,
         new OpenAIEmbeddings({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 		})
       );
       // 17. Save the vector store to the specified path
