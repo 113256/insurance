@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<link href="css/spinkit.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/styleSpeechBubble.css" rel="stylesheet">
+	<style>
+		.darkButton{
+			background:rgb(38, 65, 148);
+			color:white;
+		}
+	
+		.input-sm {
+		  font-size: 13px;
+		}
+		.input-sm input{
+		  font-size: 13px;
+		}
+		.input-sm-textarea{
+		  font-size: 12px;
+		}
+		
+		.topbar{
+			color:white;
+		}
+		.form-group {
+    margin-bottom: 0.5rem;
+}
+		.center {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  counter-reset: button;
+}
+		
+			 #conversation {
+      width: 100%;
+      overflow-y: scroll;
+      background-color: white;
+      margin: 0 auto; /* Center the div horizontally */
+      padding: 20px; /* Add padding for spacing */
+      box-sizing: border-box; /* Include padding in the width */
+	  height: 280px;
+
+    }
+	
+	.barHeading{
+	padding-left:20px
+	}
+	
+	    .spinner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+}
+
+.blurred-textarea {
+	background:rgb(200, 203, 212);
+    backdrop-filter: blur(5px); /* Adjust the blur strength as needed */
+    border: none; /* Remove the border to make it look better */
+    resize: none; /* Disable textarea resizing if needed */
+}
+
+.bg{
+	background-image: url("background.PNG");
+}
+
+    #video-wrapper{
+      height:200px;
+      background-position: top;
+    }
+
+    #video-wrapper div{
+
+    }
+    video{
+	float:left;
+      display:block;
+      /*border:1px solid;*/
+      border-radius: 0%;
+      background-color: #fff;
+    }
+	
+	
+	.greyImage {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+}
+    </style>
+	
+	<script type="module">
+		  // Import and use the exported function and variable
+			console.log("import!");
+			import { showInsuranceOptions, getMoreInfo, recommendPackage } from './insuranceHelperChatbot/streaming-client-api - chatbot.js';
+			  document.getElementById('insure').addEventListener('click', function() {
+			  console.log("A");
+      //showInsuranceOptions();
+	  getMoreInfo();
+    });
+	
+	
+	document.getElementById('medical').addEventListener('click', function() {
+			  console.log("A");
+      getMoreInfo();
+    });
+	
+	/*
+		document.getElementById('send').addEventListener('click', function() {
+			  console.log("R");
+      recommendPackage();
+    });*/
+		  
+		</script>
+</head>
+
+<body>
+					<div name = "product" style="display:None;font-size:10px;">
+						<p class="name" style="font-size:15px;font-weight:700">Test</p>
+						<p class = "summary" style="word-wrap:break-word;maxWidth:400px;word-break:break-all;">summary</p><!-- need use class as cloned element can only search for child by class -->
+						<p class = "cost">费用</p>
+						
+						<a href="#" class="moreDetails" >了解更多 ></a>
+
+					</div>
+					<div name = "productTable" style="display:None;font-size:10px;">
+						<table class="table" style = "text-align:left;">
+
+						  <tbody>
+							<tr>
+							  <th scope="row">投保年龄</th>
+							  <td class = "age" >Mark</td>
+							</tr>
+							<tr>
+							  <th scope="row">保证期</th>
+							  <td class = "guarantee" >Jacob</td>
+							</tr>
+						  </tbody>
+						</table>
+					</div>
+
+<div class="row" id="serviceChoiceElement" style="display: none; margin-bottom:10px;">
+	<div class = "col-md-3">
+		<a href="#" ><img id = "insure" style = "width:95px;height:95px" src = ".\insuranceHelperChatbot\insure.PNG" /></a>
+	</div>
+	<div class = "col-md-3 greyImage">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\claim.PNG" />
+	</div>
+	<div class = "col-md-3 greyImage">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\order.PNG" />
+	</div>
+		<div class = "col-md-3 greyImage">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\others.PNG" />
+	</div>
+</div>
+
+<div class="row" id="insuranceChoiceElement" style="display: none; margin-bottom:10px;">
+	<div class = "col-md-3">
+		<a href="#" ><img id = "medical" style = "width:95px;height:95px" src = ".\insuranceHelperChatbot\med.PNG" /></a>
+	</div>
+	<div class = "col-md-3">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\heavy.PNG" />
+	</div>
+	<div class = "col-md-3">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\comp.PNG" />
+	</div>
+		<div class = "col-md-3">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\term.PNG" />
+	</div>
+</div>
+
+	<div style = "margin-left:150px;margin-right:150px" />
+	<div class="bg">
+    <nav class="topbar navbar navbar-expand-md navbar-light mb-4 barHeading" style="background:rgb(145, 145, 145)" >
+	<img src = "img/logo.png"></img>
+	<a style="color:white" href="#" class="navbar-brand"><b>数字化保险咨询</b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+			<div style = "display:None">
+		 <input type="file" id="myfile" name="filename">
+	  <button id="upload-button" type="button">Upload</button>
+	  <button id="destroy-button" type="button">Destroy</button>
+	  </div>
+	  <div style = "display:">
+	  <button id="connect-button" type="button">Start</button>
+	  </div>
+	  <!--<input type="file" id="policies" name="policies" multiple>
+	  <button onclick = "uploadMultiple()" id="uploadMultiple" type="button">Upload Policies</button>-->
+        <div id="bs-navbar-collapse-1" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto"></ul>
+        </div>
+    </nav>
+    <div class="container-fluid" style = "padding-left:0;padding-right:0">
+        <div class="row">
+            <div class="col-md-5">
+			
+				<div style = "padding-left:20px">
+						<nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  智能服务</b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+                        <div id="bs-navbar-collapse-4" class="collapse navbar-collapse"></div>					
+						</nav>
+					
+					<div class="position-relative">
+						<div class="form-control" id="conversation" style="width: 100%; height: 520px; overflow-y: scroll">
+							<!-- Your content here -->
+						</div>
+						<div id="askSpinner" class="sk-circle-fade" style="display: none;position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 6rem; height: 6rem;">
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						  <div class="sk-circle-fade-dot"></div>
+						</div>
+						<!--<div class="spinner-border position-absolute top-50 start-50 " id="askSpinner" style="display: none;left:40%!important;top:30%!important;width: 6rem; height: 6rem;"></div>-->
+					</div>
+					
+					<div class="input-group mb-3">
+					  <input value="" id="questionInput" class="form-control" placeholder="" type="text" />
+					  <div class="input-group-append">
+						<button type="button" class="btn darkButton" id="send">发送</button>
+					  </div>
+					</div>
+				</div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="container mb-4" style = "padding-left:0;padding-right:0">
+					<div class = "row">
+					<div class="col-md-4"><div id="video-wrapper">   
+						<video id="talk-video" width=200 height=200 autoplay></video>					   
+					</div></div>
+					<div class="col-md-8"><div speech-bubble pleft abottom style="--bbColor:#484a9b; height:200px;display:None;color:white" id="speechBubble" >
+  <div class="title" ></div>
+</div></div>
+					</div>
+					
+					
+					  <div id="status" style="font-size:10px; display:None">
+      <!-- removed the wrapping <div> tags -->
+      ICE gathering status: <label id="ice-gathering-status-label"></label><br>
+      ICE status: <label id="ice-status-label"></label><br>
+      Peer connection status: <label id="peer-status-label"></label><br>
+      Signaling status: <label id="signaling-status-label"></label><br>
+    </div>
+
+				
+				<div class = "row" style = "text-align:center; margin-top:10px;background:rgb(242, 242, 242)">
+					<div id = "product1" class="col-md-4"></div>
+					<div id = "product2" class="col-md-4"></div>
+					<div id = "product3" class="col-md-4"></div>
+				</div>
+				<div class = "row" style = "text-align:center; background:rgb(242, 242, 242)">
+					<div id = "table1" class="col-md-4"></div>
+					<div id = "table2" class="col-md-4"></div>
+					<div id = "table3" class="col-md-4"></div>
+				</div>				
+                
+        </div>
+    </div>
+	</div>
+    <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
+	   <script type="text/javascript" src="./js/bootstrap.esm.min.js"></script>
+	      <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	  <script type="module" src="insuranceHelperChatbot\streaming-client-api - chatbot.js"></script>
+		<script type="text/javascript" src="insuranceHelperChatbot\script-insuranceHelper.js"></script>
+		
+
+</body>
+
+</html>

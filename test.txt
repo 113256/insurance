@@ -1,0 +1,18 @@
+You are an professional insurance officer. Based on the below text of a motor accident form, extract the details specified below. The wording must be professional and thorough. Give your answer in the below JSON format The values of the JSON MUST be in Chinese simplified. 
+{
+  "TypeOfDocument":"",
+  "Diagnosis":"",
+  "Symptoms":"",
+  "AttendingPhysician":"",
+  "HospitalizationRequired":"",
+  "HospitalName":"",
+  "IsPatientAbleToPerformJobDuties":"",
+  "SurgeryRequired":"",
+  "SummaryOfTheWholeFile":"Give a summary of the theft and cause of the claim."
+  "Recommendation":"Based on the details, the policy purchased and the policy coverage, decide whether the claim should be approved, declined, or that more information is needed e.g. photographic evidence. Give a reason and a thorough analysis as to why you gave your answer."
+}
+
+Insurance Policy purchased:重大疾病
+Policy Coverage: 在10万美元以内德所有重大疾病和手术费用
+Text is below:
+文档名称 重大疾病理赔表 诊断结果 急性淋巴白血病 门（急）诊病例 近期出现疲劳、乏力、皮肤苍白、发热、容易出血和淋巴结肿大的症状。 主治医师 王某某 就诊类型（门诊/住院） 住院 就诊医院 上海第一人民医院 是否有工作能力 没有 是否需要手术 是  

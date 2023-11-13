@@ -1,0 +1,4 @@
+cd to C:\Users\jackc\Desktop\Work\RPA\UiPath new tech\AskPDF_DEMO
+npm install to install everything in package.json
+
+>npm install --legacy-peer-deps to ignore errors

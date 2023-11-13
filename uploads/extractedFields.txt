@@ -1,0 +1,10 @@
+TypeOfDocument: 重大疾病理赔表
+Diagnosis: 急性淋巴白血病
+Symptoms: 近期出现疲劳、乏力、皮肤苍白、发热、容易出血和淋巴结肿大的症状
+AttendingPhysician: 王某某
+HospitalizationRequired: 是
+HospitalName: 上海第一人民医院
+IsPatientAbleToPerformJobDuties: 没有
+SurgeryRequired: 是
+SummaryOfTheWholeFile: 该案件涉及一位购买了重大疾病保险的患者，他被诊断为急性淋巴白血病。患者近期出现疲劳、乏力、皮肤苍白、发热、容易出血和淋巴结肿大的症状。主治医师为王某某，患者已被住院，并在上海第一人民医院接受治疗。患者目前无法工作，并需要进行手术。
+Recommendation: 根据保单的覆盖范围，该患者的医疗费用应在10万美元以内，包括所有重大疾病和手术费用。因此，我建议批准此次理赔。然而，我们需要更多信息，例如手术的详细费用和其他相关医疗费用的证据，以确保总费用在保单覆盖范围内。

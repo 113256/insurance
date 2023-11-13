@@ -1,0 +1,104 @@
+<!-- display_ae_table.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<link href = "css/bootstrap.min.css" rel = "stylesheet">
+		<style>
+		
+		
+    </style>
+    <title>AE Table</title>
+	
+</head>
+<body>
+<div style="padding-left:20px;padding-right:20px">
+    
+	
+  <div class="container-fluid">
+    <h1 id="title">test</h1>
+  </div>
+    <table class="table table-bordered" id = "questionTable">
+        <!-- Table header with Medicine and Effects columns -->
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Delete</th>
+            </tr>
+			
+        </thead>
+        <!-- Table body to display filtered contents of the "AE" table -->
+        <tbody>
+			    <tr>
+      <td contenteditable scope="row" class="table-cell" data-placeholder="Ask a question"></td>
+	  <td><button class="btn btn-danger" onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+	                
+        </tbody>
+    </table>
+	
+	<button class="btn btn-primary" onclick="addRow()">Add New Row</button>
+	<button class="btn btn-danger" onclick="processQuestions()">Process Questions</button>
+</div>
+    <script>
+    function initTableRows(){ 
+		var tableCells = document.querySelectorAll('.table-cell');
+		tableCells.forEach(function(tableCell) {
+			tableCell.textContent = tableCell.dataset.placeholder
+			tableCell.addEventListener('focus', function() {
+				if (tableCell.textContent.trim() === tableCell.dataset.placeholder) {
+					tableCell.textContent = '';
+				}
+			});
+
+			tableCell.addEventListener('blur', function() {
+				if (tableCell.textContent.trim() === '') {
+					tableCell.textContent = tableCell.dataset.placeholder;
+				}
+			});
+		});
+	}		
+	initTableRows();
+	
+	function addRow() {
+		// Get the table element by its ID
+		var table = document.getElementById('questionTable').getElementsByTagName('tbody')[0];
+
+		// Create a new row and cell
+		var newRow = table.insertRow(table.rows.length);
+		var newCell = newRow.insertCell(0);
+		var deleteCell = newRow.insertCell(1);
+		
+		// Set the contenteditable attribute and data-placeholder attribute
+		newCell.contentEditable = true;
+		newCell.setAttribute('data-placeholder', 'Ask a question');
+
+		// Add text or placeholder text
+		newCell.textContent = 'Ask a question';
+		
+		// Add a delete button to the delete cell
+		var deleteButton = document.createElement('button');
+		deleteButton.className = 'btn btn-danger';
+		deleteButton.textContent = 'Delete';
+		deleteButton.onclick = function() {
+			deleteRow(this);
+		};
+		deleteCell.appendChild(deleteButton);
+	}
+	
+	 function deleteRow(button) {
+            // Get the row containing the clicked delete button
+            var row = button.parentNode.parentNode;
+
+            // Get the table body and remove the row
+            var tableBody = row.parentNode;
+            tableBody.removeChild(row);
+        }
+		
+
+	
+	
+	
+    </script>
+	<script src="script.js"></script>
+</body>
+</html>

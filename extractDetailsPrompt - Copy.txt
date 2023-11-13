@@ -1,0 +1,17 @@
+You are an professional insurance officer. Based on the below text of a stolen goods claim form, extract the details specified below. The wording must be professional and thorough. Give your answer in the below JSON format. 
+{
+  "DateOfTheft":"",
+  "LocationOfTheft":"",
+  "DateReported":"",
+  "StolenObjectName":"",
+  "StolenObjectWorth":"",
+  "ClaimantName":"",
+  "ClaimantEmail":"",
+  "SummaryOfTheWholeFile":"Give a summary of the theft and cause of the claim."
+  "Recommendation":"Based on the details, the policy purchased and the policy coverage, decide whether the claim should be approved, declined, or that more information is needed e.g. photographic evidence. Give a reason and a thorough analysis as to why you gave your answer."
+}
+
+Insurance Policy purchased:{policy}
+Policy Coverage: {coverage}
+Text is below:
+{txt}

@@ -1,0 +1,159 @@
+Flexifortune
+{
+  "Summary": "FlexiFortune Annuity Plan is a long-term participating life insurance plan that provides a guaranteed monthly income for up to 25 years. It has a savings element and includes a dementia care booster.",
+  "Cost": "Minimum annual premium of US$950 / HK$7,600", 
+  "InsuredAge": "Age 0-80",
+  "GuaranteePeriod": "Guaranteed monthly income for up to 25 years",
+  "Deductibles": "No deductibles mentioned",
+  "Details": "Key features of FlexiFortune Annuity Plan:
+
+- Provides a guaranteed monthly income for up to 25 years. The income consists of a guaranteed portion that increases by 3% annually for 9 years, and a non-guaranteed portion from terminal bonus. 
+
+- Has a dementia care booster that provides an additional monthly income up to 100% of the guaranteed amount if the policyowner or insured is diagnosed with severe dementia before age 70 (65 for 10-year payment period).
+
+- Premiums can be paid in a single payment, or over 3, 5 or 10 years.
+
+- Offers flexibility to change the income start year before payouts begin.
+
+- Has two annuity options - living payment or certain period payment. The death benefit varies based on the option. 
+
+- Provides policy loan and realization options to withdraw cash value.
+
+- Includes an accidental death benefit in the first 5 policy years."
+}
+
+Manulife first VHIS flexi plan
+{
+  "Summary": "Manulife First VHIS Flexi Plan is an indemnity hospital insurance plan certified by the Health Bureau of Hong Kong. It provides coverage for hospitalization and surgical expenses.",
+  "Cost": "Premiums vary by age and plan choice. Tax deductions up to HK$8,000 per insured person apply.", 
+  "InsuredAge": "15 days to 80 years old",
+  "GuaranteePeriod": "Guaranteed annual renewal",
+  "Deductibles": "30% coinsurance for prescribed diagnostic imaging tests. 20% coinsurance for supplementary medical benefit.",
+  "Details": "Key features and benefits:
+
+- Coverage for hospitalization expenses like room and board, miscellaneous charges, specialist's fees etc. 
+
+- Surgical expenses coverage including surgeon's fee, operating theatre charges etc.
+
+- Prescribed non-surgical cancer treatments
+
+- Pre- and post-hospitalization outpatient care 
+
+- Enhanced benefits like isolation room, hospital companion bed
+
+- Optional supplementary medical benefit for additional coverage
+
+- No limit on annual claims amount 
+
+- Coverage for unknown pre-existing conditions after 30 days
+
+- Tax deductions for premiums paid 
+
+- Guaranteed annual renewal for lifetime
+
+Plan choices:
+
+- Ward / Semi-private Room / Private Room
+
+- With or without Major Medical / Major Medical Plus supplementary benefit
+
+Other perks: 
+
+- Preliminary assessment for upfront estimate of claimable amount
+
+- Premium discount for no claims record
+
+- ManulifeMOVE premium discount"
+}
+
+
+
+Manulife Supreme Lite VHIS Supplementary Benefit 
+{
+  "Summary": "Manulife Supreme Lite VHIS Supplementary Benefit provides extra coverage for hospitalization on top of a designated basic plan. It offers full coverage for major medical expenses like hospitalization, surgery, and cancer treatment, up to the annual limit of HK$5M or HK$12M per policy year depending on plan level.",
+  
+  "Cost": "Premiums vary depending on the age of the insured person and are payable annually. Please refer to the standard premium schedule.",
+  
+  "InsuredAge": "15 days to 80 years old", 
+  
+  "GuaranteePeriod": "Guaranteed renewable annually throughout the lifetime of the insured upon payment of premium.",
+  
+  "Deductibles": "Choice of 4 annual deductible options - HK$0, HK$25,000, HK$50,000 or HK$100,000.",
+  
+  "Details": "- Covers unknown pre-existing conditions after 30 days from policy effective date\n- 2 plan levels: Smart Plan (HK$5M annual limit) and Advance Plan (HK$12M annual limit)\n- Different ward class options: general ward to private room\n- Wide coverage including hospitalization, surgery, cancer treatment, pre- and post-hospitalization care\n- Extra coverage like medical implants, private nursing, etc\n- Cash benefits for day case procedures and confinement in general ward (Advance Plan only)\n- Worldwide emergency treatment\n- Tax savings for premiums paid by HK taxpayer\n- Access to designated hospitals in mainland China\n- Value-added services like second medical opinion, emergency assistance, etc."
+}
+
+
+
+manupremier-protector-Life
+{
+  "Summary": "ManuPremier Protector is a whole life participating insurance plan that provides lifelong protection along with long-term savings opportunities.",
+  "Cost": "Minimum annual premium is US$4,233 for a notional amount of US$250,000 based on a 35 year old non-smoker in Hong Kong.", 
+  "InsuredAge": "Issue age is 15 days to 75 years old (Hong Kong) or 70 years old (Macau)",
+  "GuaranteePeriod": "Guaranteed for lifetime",
+  "Deductibles": "No deductibles",
+  "Details": "
+    - Provides lifelong protection - pays 100% of notional amount as death benefit
+    - Offers guaranteed cash value that builds up over time
+    - Provides non-guaranteed terminal bonus which depends on investment performance
+    - Allows exercising a 'realization option' to lock in up to 50% of terminal bonus from year 15 onwards
+    - Premiums can be paid for 5, 10, 20 or 25 years
+    - Inflation protector option available to increase coverage by 10% for up to 10 years
+    - Supplementary benefits like critical illness coverage can be added for extra premiums
+  "
+}
+
+prestige-preserver
+{
+  "Summary": "Prestige Preserver is a participating life insurance policy that helps build wealth with potential for higher returns and provides step-up life protection.",
+  "Cost": "Single premium: Minimum US$6,000 / HK$48,000. 3-year premium: Minimum annual premium US$3,125 / HK$25,000. 10-year premium: Minimum annual premium US$950 / HK$7,600.", 
+  "InsuredAge": "0-70 for single premium, 0-70 for 3-year premium, 0-65 for 10-year premium",
+  "GuaranteePeriod": "Whole life",
+  "Deductibles": "No deductibles",
+  "Details": "Key features and details of Prestige Preserver:
+
+- Terminal Bonus: Policy has a non-guaranteed terminal bonus to boost potential returns based on performance of underlying investments. Paid on surrender, death, or termination.
+
+- Step-Up Life Protection: Higher life protection from year 11 to age 85. Death benefit is 130-180% of premiums paid, depending on issue age. 
+
+- Realization Option: Can lock in up to 50% of terminal bonus from year 15 onwards without surrendering policy.
+
+- Premium Holiday: For 10-year premium, can take premium holiday of up to 2 years after year 2.
+
+- Accidental Death Benefit: Additional 100% of premiums paid if death within first 5 years is accidental.
+
+- Flexible Premium Payment: Can pay premiums in single payment, over 3 years or 10 years.
+
+- Supplementary Benefits: Can add other benefits like critical illness cover with 10-year premiums.
+
+- Death Benefit Settlement Options: Can choose to pay death benefit in instalments."
+}
+
+vhis-supreme-leaflet
+{
+  "Summary": "A VHIS Flexi Plan certified by the Health Bureau that provides lifetime protection with full coverage for major medical expenses like hospitalization, surgeries, cancer treatments etc. Policyholders can choose an annual deductible from $0, $8,000, $22,800 or $45,000.",
+  "Cost": "Premiums vary depending on age, deductible option and other factors. Please refer to the standard premium schedule.",
+  "InsuredAge": "15 days to 80 years old",
+  "GuaranteePeriod": "Guaranteed renewable annually throughout the lifetime of the insured person.",
+  "Deductibles": "$0, $8,000, $22,800 or $45,000 annual deductible options.",
+  "Details": [
+    "- Covers hospitalization expenses like room and board, doctor's fees, surgeries, intensive care etc. No sub-limits applied.",
+    "- Full coverage for cancer treatments like radiotherapy, chemotherapy, targeted therapy, immunotherapy and hormonal therapy.",
+    "- Covers pre- and post-hospitalization expenses like specialists' fees, diagnostics tests, Chinese medicine, rehabilitation etc.", 
+    "- Provides additional coverage like psychiatric treatments, private nursing, implants, hospice care, pregnancy complications, emergency outpatient treatment etc.",
+    "- Insured can reduce deductible at age 50, 55, 60, 65, 70, 75, 80 or 85 without re-underwriting.",
+    "- Covers unknown pre-existing conditions after 30 days.",
+    "- Offers premium discount up to 16% for no claim periods.",
+    "- Eligible for tax deduction up to $8,000 per insured person per year."
+  ]
+}
+
+whole-in-one-prime-2-product-guide
+{
+  "Summary": "Whole-in-One Prime 2 is a participating life insurance plan that provides lifetime protection and potential return through guaranteed cash value, non-guaranteed annual dividends, and non-guaranteed terminal bonus.",
+  "Cost": "Single premium starting from US$500,000",
+  "InsuredAge": "0-70 years old",
+  "GuaranteePeriod": "Lifetime",
+  "Deductibles": "No deductibles mentioned",
+  "Details": "- Provides life protection for the entire lifetime of the insured\n- Offers guaranteed cash value that enhances wealth and creates legacy\n- Non-guaranteed annual dividends can be withdrawn anytime or left to accumulate interest\n- Non-guaranteed terminal bonus helps build potential returns over time\n- Can take policy loan up to 90% of cash value for emergency cash needs\n- Rewards good health with up to 6 premium rate classifications \n- Minimum notional amount of US$500,000\n- Accepts premium payment in USD, HKD, MOP\n- Covers all causes of death except suicide in first year\n- Can lock in up to 50% of terminal bonus from 15th policy anniversary onward through realization option\n- Death benefit depends on whether policy reached Golden Anniversary (later of age 70 or 20th anniversary)\n- Before Golden Anniversary: 100% of notional amount less realized terminal bonus OR terminal bonus + Max(guaranteed cash value, 70% of notional amount)\n- On or after Golden Anniversary: Max(guaranteed cash value, 70% of notional amount)"
+}

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/bcfe0c62-8ebe-4df0-a46d-1efcf8739a5b/resourceGroups/jack113256/providers/Microsoft.Web/sites/cognizantchatbotdemo",
+    "appService.deploySubpath": "."
+}

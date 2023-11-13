@@ -1,0 +1,99 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>OpenAI Invioce demo</title>
+	<link href = "css/bootstrap.min.css" rel = "stylesheet">
+	
+	<style>
+		/* Add custom CSS styles */
+		#aeTableContainer {
+			max-height: 600px; /* Set the maximum height here (adjust as needed) */
+			overflow-y: auto; /* Enable vertical scrolling */
+		}
+		
+		/* Fix table header while scrolling */
+		.fixed-table-header {
+			position: sticky;
+			top: 0;
+			background-color: #0e0e79; /* Change background color to blue */
+			z-index: 1;
+			color: white; /* Change font color to white */
+		}
+		
+		
+    </style>
+</head>
+<body>
+    <!-- As a heading -->
+<nav class="navbar navbar-light "  style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"><h1>OpenAI Invoice Demo</h1></span>
+  </div>
+</nav>
+<div style="padding-left:20px;padding-right:20px">
+
+    
+<!-- Tabs navs -->
+<!-- Nav tabs -->
+
+<!-- Tabs navs -->
+
+<!-- Tabs content -->
+
+<!-- Tab panes -->
+
+
+input = pdf 
+output = fields 
+- date/time
+-item stolen
+-cost of item
+- details of theft
+- cause of claim
+-whole summary
+
+		<div class = "row">
+		
+		<div class = "col-lg-12">
+		<p></p>
+		
+		<div class = "row g-3 align-items-center">
+
+		<div class = "col-auto">
+			<input class="btn btn-primary" type="file" id="pdfs" name = "pdfs" >
+		</div>
+		<div class = "col-auto">
+			<button class="btn btn-primary" onclick="uploadPDF()">Upload File</button>
+		</div>
+		</div>
+		<br>
+		<input id = "questionInput" />
+		<button class="btn btn-primary" onclick="processSingleQuestion()">Ask</button>
+		</div>
+
+	</div>
+  
+  <input id = "DateOfTheft" />
+  <input id = "LocationOfTheft" />
+  <input id = "questionInput" />
+ 
+
+
+
+
+
+<!-- Tabs content -->
+	
+	
+</div>	
+	
+	
+		
+	<!-- need type=module or else get ncaught SyntaxError: Cannot use import statement outside a modul-->
+    <script src="script.js"></script>
+	<script src= "js/bootstrap.bundle.min.js" ></script>
+	<script src= "js/bootstrap.min.js" ></script>
+</body>
+</html>

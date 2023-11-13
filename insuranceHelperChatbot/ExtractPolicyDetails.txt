@@ -1,0 +1,10 @@
+From the below insurance policy information, please extract details in the below JSON format
+{"Summary":"Summary of the policy",
+"Cost":"Cost per month in USD",
+"InsuredAge":"Allowed age range",
+"GuaranteePeriod":"Guarantee period of the policy",
+"Deductibles":"If there are any deductibles"
+}
+
+The text:
+{text}
