@@ -4,7 +4,6 @@ const multer = require('multer');
 const fs = require('fs');
 //const fetch = require('node-fetch');
 const PDFParser = require('pdf-parse');
-const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
 //const  PDFExtract = require('pdf-extraction');
 //const pdfjsLib = require('pdfjs-dist');
