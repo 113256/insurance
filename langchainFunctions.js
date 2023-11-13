@@ -205,24 +205,24 @@ async function langchainProcessQuestions(filePath, questionListString){
 }
 
 async function langchainProcessOneQuestion(filePath, question){
-	const VECTOR_STORE_PATH = "LangchainIndexes\\"+filePath;
+	const VECTOR_STORE_PATH = "./LangchainIndexes/"+filePath;
 
     // 12. Initialize the OpenAI language model
     const model = new OpenAI({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	});
 
     let vectorStore;
 
     // 13. Check if an existing vector store is available
-    console.log("Checking for existing vector store...");
+    console.log("Checking for existing vector store..."+filePath+"="+VECTOR_STORE_PATH);
     if (fs.existsSync(VECTOR_STORE_PATH)) {
       // 14. Load the existing vector store
       console.log("Loading existing vector store...");
       vectorStore = await HNSWLib.load(
         VECTOR_STORE_PATH,
         new OpenAIEmbeddings({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	})
       );;
       console.log("Vector store loaded.");
