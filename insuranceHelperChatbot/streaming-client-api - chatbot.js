@@ -277,6 +277,7 @@ async function uploadImg(){
          console.log(data);
 		uploadImgUrl = data.url;
 		console.log(uploadImgUrl);
+		document.getElementById('connect-button').style.backgroundColor = 'green';
       })
 	  .catch(err => console.error(err));
 	  
@@ -341,7 +342,7 @@ connectButton.onclick = async () => {
     method: 'POST',
     headers: {'Authorization': `Basic ${DID_API.key}`, 'Content-Type': 'application/json'},
     body: JSON.stringify({
-      source_url: "s3://d-id-images-prod/google-oauth2|100714487621776503336/img_LAa87m0yxpmSmgaCcE88Y/goatfood113256_Pretty_asian_female_elegant_Generate_a_headshot__e32381a4-4835-4ba1-86a3-7c4745ab59ae.png"
+      source_url: uploadImgUrl
     }),   
   });
 //source_url: uploadImgUrl
@@ -422,9 +423,13 @@ async function talkCustom(content) {
    
 	
 	}
+
+
+	try{
 	var hiddenElement = document.getElementById('speechBubble');
     hiddenElement.style.display = ''; // Show the hidden element
 	hiddenElement.innerText = content;
+} catch (e){}
 }
 	
   export async function askQuestion() {

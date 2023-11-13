@@ -106,38 +106,7 @@ function appendTrainingToPage(id, title, summary) {
     productPlaceholder.appendChild(hiddenElement);
 }
 
-async function recommendTraining() {
-		 document.getElementById('askSpinner').style.display = 'block';
-		var clientAnswer = document.getElementById("questionInput").value;
-		
-		updateConversation(clientAnswer,"");
-		clearChat();
-		//await talkCustom("Medical insurance is primarily used for the reimbursement of medical expenses. Key points to consider before choose a product are:\n1. Priority allocation of hospitalization medical insurance.\n2. If you cannot afford millions in medical coverage, you can opt for anti-cancer medical insurance.\n3. Depending on your specific situation, consider supplementing with other medical insurance.\nPlease refer below for the recommended products, click the Images for more details.");
-		
-		const response = await fetch(`/recommendTraining?clientAnswer=${encodeURIComponent(clientAnswer)}&trainType=${encodeURIComponent(chosenType)}`, {
-		  method: 'POST',
-		});
 
-	    console.log(response);
-		var responseTxt = await response.text();
-			    console.log(responseTxt);
-		//responseTxt = responseTxt.match(/\{[\s\S]*?\}/)[0];
-	   
-	   
-	   var items = eval(responseTxt); //use eval instead of json.parse for [ ] json data (can use parse for { } )
-		for (var x = 0; x < items.length; x++) {
-			console.log(items[x].Name);
-			//function appendProductToPage(id, name, summary, cost, guarantee,details,reason) {
-			appendTrainingToPage(x+1,items[x]['Name'],items[x]['Summary']);
-		}
-		
-		  document.getElementById('askSpinner').style.display = 'None';
-		updateConversation("", "根据您的回答，已为您推荐最合适的培训课程");
-		//await talkCustom("以下是推荐的产品，请点击产品了解更多信息，同时也可以随时提出您自己的问题。");
-		
-		enableAskQuestions();
-	
-}
 
 
 

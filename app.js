@@ -6,8 +6,8 @@ const fs = require('fs');
 const PDFParser = require('pdf-parse');
 const http = require('http');
 //const  PDFExtract = require('pdf-extraction');
-//const pdfjsLib = require('pdfjs-dist');
-const path = require('path');
+//const pdfjsLib = require('pdfjs-dist')
+;const path = require('path');
 const XLSX = require('xlsx');
 const { promisify } = require('util');
 const sleep = promisify(setTimeout);
@@ -150,7 +150,7 @@ app.delete('/delete-upload-info', async (req, res) => {
   }
 });
 
-
+/*
 function getPDFText(pdfUrl){
   var pdf = pdfjsLib.getDocument(pdfUrl);
   return pdf.promise.then(function(pdf) { // get all pages text
@@ -173,7 +173,13 @@ function getPDFText(pdfUrl){
     });
   });
 }
-
+*/
+async function getPDFText(pdfUrl){
+  const pdfBuffer = fs.readFileSync(pdfUrl); 
+  const data = await PDFParser(pdfBuffer);
+  console.log(data);
+  return data.text;
+}
 //
 
 app.post('/processSingleQuestionLangchain', async (req, res) => {
@@ -632,7 +638,7 @@ app.post('/answerQuestion', async (req, res) => {
 	
 	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner: "+clientAnswer+",\.  answer MUST be in chinese";
 
-	var result = await processPromptDataCustomToken  (prompt,false,1000);
+	var result = await processPromptDataCustomToken  (prompt,false,300);
 	console.log(result);
 	return res.status(200).send(result);
 	
@@ -666,8 +672,29 @@ app.post('/recommendPackages', async (req, res) => {
 	
   });
 
+app.post('/generateSimulation', async (req, res) => {
+  var target =req.query.target;
+  
+  var prompt = `You are an professional insurance officer. Based on the specified target client: ${target}, generate a simulated conversation between the client and an insurance officer. The scenario can be something the target client faces on a daily basis for example if the target client is a young family, the scenario can be where they have a child and are asking about what life insurance they should purchase. Give your answer in the following JSON format: [{"Client":"","Agent":""},{"Client":"","Agent":""}]. The JSON values MUST be in chinese`
 
+  var result = await processPromptDataCustomToken(prompt,false,1000);
+  console.log(result);
+  result = result.match(/\[[\s\S]*\]/)[0];
+  return res.status(200).send(result);
+  
+  });
+app.post('/generateCustomSimulation', async (req, res) => {
+  var target =req.query.target;
+  var scenario = req.query.scenario;
+console.log(target);
+  var prompt = `You are an professional insurance officer. Based on the specified target client: ${target}, generate a simulated conversation between the client and an insurance officer. The scenario is the following: ${scenario}. Give your answer in the following JSON format: [{"Client":"","Agent":""},{"Client":"","Agent":""}]. The JSON values MUST be in chinese`
 
+  var result = await processPromptDataCustomToken(prompt,false,1000);
+  console.log(result);
+  result = result.match(/\[[\s\S]*\]/)[0];
+  return res.status(200).send(result);
+  
+  });
 
 app.post('/uploadMultiplePolicyDocs', upload.array('pdfs[]'), async (req, res) => {
   try {
