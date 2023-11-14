@@ -56,7 +56,9 @@ function askCustomTarget(){
       updateConversation("", "Please provide a specific client type, for example student, elder or family etc.")
   }
 
-  
+  try{  document.getElementById('send').removeEventListener('click', generateSimulation);}catch(e){
+    
+  }
 document.getElementById('send').addEventListener('click', processCustomTarget);
 
 }
@@ -145,23 +147,21 @@ conversationElement.appendChild(responseElement);
 
 
 async function startSimulation(target){
+  console.log("TARGETT  "+customTarget );
   document.getElementById('send').addEventListener('click', generateSimulation);
+  document.getElementById('askSpinner').style.display = 'block';
   customTarget = target;
       var language   = document.getElementById("currentLanguage").innerText ;
   var greeting;
-  if (language=="Chinese"){
-    greeting = "你好，我是您专属的保险专员。有什么可以帮到您的吗？";
-  } else {
-      greeting = "Hello, I am your dedicated insurance officer. How may I help you?";
-  }
+  
   clearChatHistory();
-    updateConversation("", greeting);
-    const response = await fetch(`/startSimulation?greeting=${encodeURIComponent(greeting)}`,{
+    
+    const response = await fetch(`/startSimulation?target=${encodeURIComponent(customTarget)}`,{
      method: 'POST',
     });
-
-   
-
+    responseTxt = await response.text();
+   updateConversation("", responseTxt);
+document.getElementById('askSpinner').style.display = 'None';
     
 }
 

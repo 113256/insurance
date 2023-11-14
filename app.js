@@ -728,15 +728,27 @@ app.post('/startSimulation', async (req, res) => {
   console.log('File deleted successfully');
 });
 
+ var prompt = `You are a ${req.query.target} in a conversation with an insurance officer about a scneario. The scenario can be something the target client faces on a daily basis for example if you are a young family, the scenario can be where you have a child and are asking about what life insurance they should purchase, Come up with an enquiry to the insurance officer. {chineseModifier}`
 
-fs.writeFile(scriptPath, "Officer: "+req.query.greeting, 'utf8', (err) => {
+
+
+    if (req.query.language == "Chinese"){
+      prompt = prompt.replace("{chineseModifier}", "The answer MUST be in chinese");
+    } else {
+           prompt = prompt.replace("{chineseModifier}", "");
+    }
+
+  var result = await processPromptDataCustomToken(prompt,false,1000);
+
+
+fs.writeFile(scriptPath, "You: "+result, 'utf8', (err) => {
     if (err) {
       console.error('Error appending line to file:', err);
       return;
     }
     console.log('Line appended to file successfully');
   });
-
+return res.status(200).send(result);
 });
 
 app.post('/generateSimulation', async (req, res) => {
@@ -747,14 +759,14 @@ app.post('/generateSimulation', async (req, res) => {
   var target =req.query.target;
   var question =req.query.clientAnswer; 
 
-  conversationHistory = `${conversationHistory}\nClient:${question}`;
+  conversationHistory = `${conversationHistory}\nOfficer:${question}`;
   
 
   //var prompt = `You are an professional insurance officer. Based on the specified target client: ${target}, generate a simulated conversation between the client and an insurance officer. The scenario can be something the target client faces on a daily basis for example if the target client is a young family, the scenario can be where they have a child and are asking about what life insurance they should purchase. Give your answer in the following JSON format: [{"Client":"","Agent":""},{"Client":"","Agent":""}]. {chineseModifier}`
 
 
 
-  var prompt = `You are an professional insurance officer. You are having a conversation with a client (${target}) about a certain scenario. Based on the conversation history here below, Come up with the next reply. In this format: {"Reply": ""} . {chineseModifier}
+  var prompt = `You are a ${target}) in a conversation with an insurance officer. Based on the conversation history here below, Come up with the next reply. In this format: {"Reply": ""} . {chineseModifier}
 
 Conversation History:
 ${conversationHistory}`
@@ -770,7 +782,7 @@ ${conversationHistory}`
   //console.log(responseData);
    console.log(result);
   //result = result.match(/\[[\s\S]*\]/)[0];
-conversationHistory = `${conversationHistory}\nOfficer:${JSON.parse(result).Reply}`;
+conversationHistory = `${conversationHistory}\nYou:${JSON.parse(result).Reply}`;
 // Writing the updated content back to the file
   fs.writeFile(scriptPath, conversationHistory, 'utf8', (err) => {
     if (err) {
