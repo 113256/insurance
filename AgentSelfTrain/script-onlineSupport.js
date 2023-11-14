@@ -30,12 +30,12 @@ function updateConversation(prompt, response) {
   
 promptElement.style.width = '90%'; // Set the  width
 //promptElement.style.wordWrap = 'break-word'; // Break long words onto the next line
-promptElement.style.maxWidth = '500px'; // Set the maximum width
+promptElement.style.maxWidth = '90%'; // Set the maximum width
 promptElement.style.wordBreak = 'normal'; // Break long words
 
 responseElement.style.width = '90%'; // Set the  width
 //responseElement.style.wordWrap = 'break-word'; // Break long words onto the next line
-responseElement.style.maxWidth = '500px'; // Set the maximum width
+responseElement.style.maxWidth = '90%'; // Set the maximum width
 responseElement.style.wordBreak = 'normal'; // Break long words
   
 // Style for prompt element

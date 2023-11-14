@@ -129,7 +129,7 @@ function updateConversation(prompt, response) {
   const responseElement = document.createElement('p');
   promptElement.innerText = prompt;
   responseElement.innerText = response;
-    promptElement.style.textAlign = 'right';
+    promptElement.style.textAlign = 'left';
   responseElement.style.textAlign = 'left';
   promptElement.style.marginRight = '20px'; // Optional: add some spacing between prompt and response
   promptElement.style.fontWeight = 'bold'; // Optional: make prompt text bold
