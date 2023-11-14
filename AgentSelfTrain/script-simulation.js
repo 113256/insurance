@@ -5,12 +5,13 @@ let chosenType = "";
 let customTarget;
 let customScenario;
 
+
 async function processCustomTarget(){
     customTarget = document.getElementById("questionInput").value;
-    updateConversation("","请根据以上目标客户提供一个特定的情境");
+    //updateConversation("","请根据以上目标客户提供一个特定的情境");
     document.getElementById('send').removeEventListener('click', processCustomTarget);
-    document.getElementById('send').addEventListener('click', processCustomScenario);
-
+    //document.getElementById('send').addEventListener('click', processCustomScenario);
+    startSimulation(customTarget);
 }
 
 async function processCustomScenario(){
@@ -46,7 +47,16 @@ async function processCustomScenario(){
 
 function askCustomTarget(){
   clearChatHistory();
-  updateConversation("", "请提供一个特定的目标客户，例如学生、老年人、家庭等")
+
+   var language   = document.getElementById("currentLanguage").innerText ;
+  var greeting;
+  if (language=="Chinese"){
+    updateConversation("", "请提供一个特定的目标客户，例如学生、老年人、家庭等")
+  } else {
+      updateConversation("", "Please provide a specific client type, for example student, elder or family etc.")
+  }
+
+  
 document.getElementById('send').addEventListener('click', processCustomTarget);
 
 }
@@ -134,12 +144,30 @@ conversationElement.appendChild(responseElement);
 
 
 
-
-
-
-async function generateSimulation(target){
+async function startSimulation(target){
+  document.getElementById('send').addEventListener('click', generateSimulation);
+  customTarget = target;
+      var language   = document.getElementById("currentLanguage").innerText ;
+  var greeting;
+  if (language=="Chinese"){
+    greeting = "你好，我是您专属的保险专员。有什么可以帮到您的吗？";
+  } else {
+      greeting = "Hello, I am your dedicated insurance officer. How may I help you?";
+  }
   clearChatHistory();
-	console.log(target);
+    updateConversation("", greeting);
+    const response = await fetch(`/startSimulation?greeting=${encodeURIComponent(greeting)}`,{
+     method: 'POST',
+    });
+
+   
+
+    
+}
+
+
+async function generateSimulation(){
+	console.log(customTarget);
    document.getElementById('askSpinner').style.display = 'block';
     var clientAnswer = document.getElementById("questionInput").value;
     
@@ -147,7 +175,7 @@ async function generateSimulation(target){
     clearChat();
     //await talkCustom("Medical insurance is primarily used for the reimbursement of medical expenses. Key points to consider before choose a product are:\n1. Priority allocation of hospitalization medical insurance.\n2. If you cannot afford millions in medical coverage, you can opt for anti-cancer medical insurance.\n3. Depending on your specific situation, consider supplementing with other medical insurance.\nPlease refer below for the recommended products, click the Images for more details.");
     
-    const response = await fetch(`/generateSimulation?target=${encodeURIComponent(target)}`, {
+    const response = await fetch(`/generateSimulation?target=${encodeURIComponent(customTarget)}&clientAnswer=${encodeURIComponent(clientAnswer)}`, {
       method: 'POST',
     });
 
@@ -156,6 +184,7 @@ async function generateSimulation(target){
           console.log(responseTxt);
     //responseTxt = responseTxt.match(/\{[\s\S]*?\}/)[0];
      
+     /*
      
      var items = eval(responseTxt); //use eval instead of json.parse for [ ] json data (can use parse for { } )
     for (var x = 0; x < items.length; x++) {
@@ -163,7 +192,9 @@ async function generateSimulation(target){
       //function appendProductToPage(id, name, summary, cost, guarantee,details,reason) {
       updateConversation(items[x]['Client'],items[x]['Agent']);
     }
-    
+    */
+    updateConversation("",responseTxt);
+
       document.getElementById('askSpinner').style.display = 'None';
     //updateConversation("", "根据您的回答，已为您推荐最合适的培训课程");
     //await talkCustom("以下是推荐的产品，请点击产品了解更多信息，同时也可以随时提出您自己的问题。");
@@ -172,9 +203,22 @@ async function generateSimulation(target){
 
 
 
+function reset(){
+  clearChatHistory();
+  var language   = document.getElementById("currentLanguage").innerText ;
+  if (language=="Chinese"){
+    updateConversation("","请选择您的目标客户。您还可以点击“自定义”以指定您自己的客户和情境。");
+
+
+  } else {
+    updateConversation("","Please select your target client. You can also select 'Custom' to define your own client type");
+
+  }
+  
+  
+}
 
 // On page load, fetch the data and populate the table
 window.addEventListener('load', () => {
-	updateConversation("","请选择您的目标客户。您还可以点击“自定义”以指定您自己的客户和情境。");
-
+	reset();
 });

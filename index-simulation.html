@@ -122,7 +122,7 @@
 	<div class="bg">
     <nav class="topbar navbar navbar-expand-md navbar-light barHeading" style="background:rgb(145, 145, 145)" >
 	<img src = "img/logo.png"></img>
-	<a style="color:white" href="#" class="navbar-brand"><b>代理人智能培训系统</b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+	<a style="color:white" href="#" class="navbar-brand"><b><span lang="en">Insurance GenAI Agent Self-Training</span><span lang="cn">代理人智能培训系统</span></b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
 			<div style = "display:None">
 		 <input type="file" id="myfile" name="filename">
 	  <button id="upload-button" type="button">Upload</button>
@@ -138,8 +138,10 @@
     </nav>
 	
 	    <nav class="topbar navbar navbar-expand-md navbar-light mb-4 barHeading" style="background:rgb(38, 65, 148)" >
-	<a style="color:white" href="#" class="navbar-brand"><b>通过生成式人工智能进行模拟</b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
-			
+	<a style="color:white" href="#" class="navbar-brand"><b><span lang="en">GenAI Simulation</span><span lang="cn">通过生成式人工智能进行模拟</span></b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+				<span style="display:None" id = "currentLanguage">English</span>
+        <button type="button" onclick="eng();reset();" style="color:white" class="btn btn-link">ENG</button>
+        <button type="button" onclick="cn();reset();" style="color:white" class="btn btn-link">中文</button>
     </nav>
 	
     <div class="container-fluid" style = "padding-left:0;padding-right:0">
@@ -152,23 +154,23 @@
       <span class="fs-4">My Training</span>
     </a>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+   <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="index-agentTraining.html" class="nav-link link-dark" aria-current="page">
+        <a href="index-agentTraining.html" class="nav-link active" aria-current="page">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-          Agent Self-Training
+          <span lang="en">Agent Self-Training</span><span lang="cn">代理人培训</span>
         </a>
       </li>
       <li>
         <a href="index-onlineSupport.html" class="nav-link link-dark">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-          Online Support
+          <span lang="en">Online Support</span><span lang="cn">线上支援</span>
         </a>
       </li>
       <li>
-        <a href="index-simulation.html" class="nav-link active">
+        <a href="index-simulation.html" class="nav-link link-dark">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Simulation Via GenAI
+                   <span lang="en">Simulation Via GenAI</span><span lang="cn">模拟</span> 
         </a>
       </li>
       <li>
@@ -193,7 +195,7 @@
             <div class="col-md-5">
 			
 				<div style = "padding-left:20px">
-						<nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  智能服务</b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+						<nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  <span lang="en">Chat</span><span lang="cn">智能服务</span></b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
                         <div id="bs-navbar-collapse-4" class="collapse navbar-collapse"></div>					
 						</nav>
 					
@@ -221,7 +223,7 @@
 					<div class="input-group mb-3">
 					  <input value="" id="questionInput" class="form-control" placeholder="" type="text" />
 					  <div class="input-group-append">
-						<button type="button" class="btn darkButton" id="send">发送</button>
+						<button type="button" class="btn darkButton" id="send"><span lang="en">Send</span><span lang="cn">发送</span></button>
 					  </div>
 					</div>
 				</div>
@@ -235,9 +237,9 @@
 										<div name = "class" style="color:white;font-size:15px; padding-left:20px;padding-top:20px">
 											<div style="text-align:center">
 											<img src="AgentSelfTrain/1.png">
-											<p class="name" style="font-size:20px;font-weight:700; text-align:center">年轻家庭</p>
+											<p class="name" style="font-size:20px;font-weight:700; text-align:center"><span lang="en">Young Family</span><span lang="cn">年轻家庭</span></p>
 											<!--<p style="background:grey">My Family and I recently welcomed our first child, What type of life insurance should we consider?</p>-->
-											<button type="button"  onclick="generateSimulation('Young Family')" class="btn btn-primary">生成模拟对话</button>
+											<button type="button"  onclick="startSimulation('Young Family')" class="btn btn-primary"><span lang="en">Start Simulation</span><span lang="cn">开始模拟对话</span></button>
 											</div>
 										
 										</div>
@@ -246,9 +248,9 @@
 																				<div name = "class" style="color:white;font-size:15px; padding-left:20px;padding-top:20px">
 											<div style="text-align:center">
 											<img src="AgentSelfTrain/2.png">
-											<p class="name" style="font-size:20px;font-weight:700; text-align:center">老年人</p>
+											<p class="name" style="font-size:20px;font-weight:700; text-align:center"><span lang="en">Elderly</span><span lang="cn">老年人</span></p>
 											<!--<p style="background:grey">My Family and I recently welcomed our first child, What type of life insurance should we consider?</p>-->
-											<button type="button" onclick="generateSimulation('senior citizen')" class="btn btn-primary">生成模拟对话</button>
+											<button type="button" onclick="startSimulation('senior citizen')" class="btn btn-primary"><span lang="en">Start Simulation</span><span lang="cn">开始模拟对话</span></button>
 											</div>
 										
 										</div>
@@ -261,9 +263,9 @@
 										<div name = "class" style="color:white;font-size:15px; padding-left:20px;padding-top:20px">
 											<div style="text-align:center">
 											<img src="AgentSelfTrain/3.png">
-											<p class="name" style="font-size:20px;font-weight:700; text-align:center">首次购房者</p>
+											<p class="name" style="font-size:20px;font-weight:700; text-align:center"><span lang="en">First-time homebuyer</span><span lang="cn">首次购房者</span></p>
 											<!--<p style="background:grey">My Family and I recently welcomed our first child, What type of life insurance should we consider?</p>-->
-											<button type="button"  onclick="generateSimulation('First-time Homebuyer')" class="btn btn-primary">生成模拟对话</button>
+											<button type="button"  onclick="startSimulation('First-time Homebuyer')" class="btn btn-primary"><span lang="en">Start Simulation</span><span lang="cn">开始模拟对话</span></button>
 											</div>
 										
 										</div>								
@@ -272,9 +274,9 @@
 										<div name = "class" style="color:white;font-size:15px; padding-left:20px;padding-top:20px">
 											<div style="text-align:center">
 											<img src="AgentSelfTrain/4.png">
-											<p class="name" style="font-size:20px;font-weight:700; text-align:center">自定义</p>
+											<p class="name" style="font-size:20px;font-weight:700; text-align:center"><span lang="en">Custom</span><span lang="cn">自定义</span></p>
 											<!--<p style="background:grey">My Family and I recently welcomed our first child, What type of life insurance should we consider?</p>-->
-											<button type="button"  onclick="askCustomTarget()"  class="btn btn-primary">生成模拟对话</button>
+											<button type="button"  onclick="askCustomTarget()"  class="btn btn-primary"><span lang="en">Start Simulation</span><span lang="cn">开始模拟对话</span></button>
 											</div>
 										
 										</div>										
@@ -295,7 +297,8 @@
 	  <!--<script type="module" src="insuranceHelperChatbot\streaming-client-api - chatbot.js"></script>-->
 		
 			<script type="text/javascript" src=".\AgentSelfTrain\script-simulation.js"></script>
-		
+			<script src="language.js"></script>
+
 
 </body>
 

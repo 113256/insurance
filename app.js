@@ -662,13 +662,13 @@ if (req.query.language == "Chinese"){
   app.post('/answerInsuranceQuestion', async (req, res) => {
 	var clientAnswer =req.query.clientAnswer;
   var language = req.query.language;
-	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner: "+clientAnswer+",\n  {chineseModifier}";
+	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner: "+clientAnswer+",\n.Reply in 50 or less words.  {chineseModifier}";
 if(language=="Chinese"){
   prompt = prompt.replace("{chineseModifier}", "answer MUST be in chinese");
 } else {
   prompt = prompt.replace("{chineseModifier}", "");
 }
-	var result = await processPromptDataCustomToken  (prompt,false,300);
+	var result = await processPromptDataCustomToken  (prompt,false,100);
 	console.log(result);
 	return res.status(200).send(result);
 	
@@ -718,10 +718,46 @@ app.post('/recommendPackages', async (req, res) => {
 	
   });
 
+app.post('/startSimulation', async (req, res) => {
+    const scriptPath = "simulation.txt";
+  fs.unlink(scriptPath, (err) => {
+  if (err) {
+    console.log('Error deleting the file:', err);
+    //return;
+  }
+  console.log('File deleted successfully');
+});
+
+
+fs.writeFile(scriptPath, "Officer: "+req.query.greeting, 'utf8', (err) => {
+    if (err) {
+      console.error('Error appending line to file:', err);
+      return;
+    }
+    console.log('Line appended to file successfully');
+  });
+
+});
+
 app.post('/generateSimulation', async (req, res) => {
+
+  const scriptPath = "simulation.txt";
+  var conversationHistory = await fs.promises.readFile(scriptPath, 'utf8');  
+
   var target =req.query.target;
+  var question =req.query.clientAnswer; 
+
+  conversationHistory = `${conversationHistory}\nClient:${question}`;
   
-  var prompt = `You are an professional insurance officer. Based on the specified target client: ${target}, generate a simulated conversation between the client and an insurance officer. The scenario can be something the target client faces on a daily basis for example if the target client is a young family, the scenario can be where they have a child and are asking about what life insurance they should purchase. Give your answer in the following JSON format: [{"Client":"","Agent":""},{"Client":"","Agent":""}]. {chineseModifier}`
+
+  //var prompt = `You are an professional insurance officer. Based on the specified target client: ${target}, generate a simulated conversation between the client and an insurance officer. The scenario can be something the target client faces on a daily basis for example if the target client is a young family, the scenario can be where they have a child and are asking about what life insurance they should purchase. Give your answer in the following JSON format: [{"Client":"","Agent":""},{"Client":"","Agent":""}]. {chineseModifier}`
+
+
+
+  var prompt = `You are an professional insurance officer. You are having a conversation with a client (${target}) about a certain scenario. Based on the conversation history here below, Come up with the next reply. In this format: {"Reply": ""} . {chineseModifier}
+
+Conversation History:
+${conversationHistory}`
 
     if (req.query.language == "Chinese"){
       prompt = prompt.replace("{chineseModifier}", "The JSON values MUST be in chinese");
@@ -730,9 +766,21 @@ app.post('/generateSimulation', async (req, res) => {
     }
 
   var result = await processPromptDataCustomToken(prompt,false,1000);
-  console.log(result);
-  result = result.match(/\[[\s\S]*\]/)[0];
-  return res.status(200).send(result);
+    //const responseData = await result.json();
+  //console.log(responseData);
+   console.log(result);
+  //result = result.match(/\[[\s\S]*\]/)[0];
+conversationHistory = `${conversationHistory}\nOfficer:${JSON.parse(result).Reply}`;
+// Writing the updated content back to the file
+  fs.writeFile(scriptPath, conversationHistory, 'utf8', (err) => {
+    if (err) {
+      console.error('Error appending line to file:', err);
+      return;
+    }
+    console.log('Line appended to file successfully');
+  });
+
+  return res.status(200).send(JSON.parse(result).Reply);
   
   });
 app.post('/generateCustomSimulation', async (req, res) => {
