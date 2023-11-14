@@ -1,4 +1,4 @@
-You are an professional insurance officer. Based on the below text of a motor accident form, extract the details specified below. The wording must be professional and thorough. Give your answer in the below JSON format The values of the JSON MUST be in Chinese simplified. 
+You are an professional insurance officer. Based on the below text of a motor accident form, extract the details specified below. The wording must be professional and thorough. Give your answer in the below JSON format. {chineseModifier}
 {
   "TypeOfDocument":"",
   "Diagnosis":"",

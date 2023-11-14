@@ -187,9 +187,22 @@ app.post('/processSingleQuestionLangchain', async (req, res) => {
 	//console.log("PDFPTEXT " +pdfText);
 	try {
 	var claimDetails = fs.readFileSync(path.join(__dirname, 'uploads', "extractedFields.txt"), 'utf8');
+  /*
 	var question = "You are an professional insurance officer. Answer the following question in a professional and thorough manner based on the context provided: "+req.query.question + ". Your response MUST be in Chinese Simplified. Also take into account the details of the current claim: "+claimDetails ;
 	console.log("QL + "+question);
 	var answerTxt = await langchainFunctions.langchainProcessOneQuestion("policy.txt", question);
+  */
+var question = "You are an professional insurance officer. Answer the following question in a professional and thorough manner: "+req.query.question + ". {chineseModifier} Answer is based on details of the current claim: "+claimDetails ;
+
+  if (req.query.language == "Chinese"){
+    question = question.replace("{chineseModifier}", "Your response MUST be in Chinese Simplified. ");
+  } else {
+    question = question.replace("{chineseModifier}", "");
+  }
+
+  console.log("QL + "+question);
+  var answerTxt = await processPromptDataCustomToken(question, false, 1000);
+
 	//update chat window
 	console.log(answerTxt);
 	/*
@@ -567,13 +580,20 @@ while (!success && retryCount < maxRetries) {
     }
 }
 
-app.get('/generateEmail' , async (req, res) => {
+app.post('/generateEmail' , async (req, res) => {
   try {
-	console.log("generateEmail....");  
+	console.log("generateEmail...."+req.query.language);  
    
      var claimDetails = fs.readFileSync(path.join(__dirname, 'uploads', "extractedFields.txt"), 'utf8');
      
-	 var prompt = "You are an professional insurance officer. Based on the below claim details write an email reply directed to the Claimant. Let them know whether the claim has been approved or declined, or if more information is needed. Reply in thorough and professional manner. YOU MUST REPLY IN CHINESE. End the email with 'Kind Regards,\nJacob Chan, Claims Officer. Start the email with 'Dear {ClaimerName}'. The claim details are below \n"+claimDetails;
+	 var prompt = "You are an professional insurance officer. Based on the below claim details write an email reply directed to the Claimant. Let them know whether the claim has been approved or declined, or if more information is needed. Reply in thorough and professional manner. {chineseModifier}. End the email with 'Kind Regards,\nJacob Chan, Claims Officer. Start the email with 'Dear {ClaimerName}'. The claim details are below \n"+claimDetails;
+
+if (req.query.language == "Chinese"){
+    prompt = prompt.replace("{chineseModifier}", "YOU MUST REPLY IN CHINESE");
+  } else {
+    prompt = prompt.replace("{chineseModifier}", "");
+  }
+
 	 var reply = await processPromptData(prompt,false);
 	  
 
@@ -625,7 +645,13 @@ app.post('/answerQuestion', async (req, res) => {
 	const productsPath = "insuranceHelperChatbot/PolicyDetailsSumary.txt";
 	const products = await fs.promises.readFile(productsPath, 'utf8');
 	
-	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner and you must limit your knowledge to the below knowledge base.: "+clientAnswer+",\.  answer MUST be in chineseKnowledge Base: Insurance product list: "+products;
+	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner and you must limit your knowledge to the below knowledge base.: "+clientAnswer+",\n  {chineseModifier}. Knowledge Base: Insurance product list: "+products;
+
+if (req.query.language == "Chinese"){
+      prompt = prompt.replace("{chineseModifier}", "answer MUST be in chinese");
+    } else {
+           prompt = prompt.replace("{chineseModifier}", "");
+    }
 
 	var result = await processPromptData(prompt,false);
 	console.log(result);
@@ -659,11 +685,22 @@ app.post('/recommendTraining', async (req, res) => {
 
 app.post('/recommendPackages', async (req, res) => {
 	var clientAnswer =req.query.clientAnswer;
+  var productsPath = "insuranceHelperChatbot/PolicyDetailsSumary.txt";
+	if (req.query.language == "Chinese"){
+       productsPath = "insuranceHelperChatbot/PolicyDetailsSumary.txt";
+  }else{
+     productsPath = "insuranceHelperChatbot/PolicyDetailsSumary-English.txt";
+  }
 	
-	const productsPath = "insuranceHelperChatbot/PolicyDetailsSumary.txt";
 	const products = await fs.promises.readFile(productsPath, 'utf8');
 	
-	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner. You have asked the client about their Gender, Age, Annual Income, medical history and Non-liquid Assets. Client has replied with " + clientAnswer+".  Based on their answer, recommend the top three insurance products from the below list. Give your answer in the following JSON format: [{'Name':'','Summary':'','Cost':'','Insured Age Range':'','Guarantee Period':'','Reason':'Reasons why this product is suitable based on the answer','Details':'Give details and features of this product'},{'Name':'','Summary':'','Cost':'','Insured Age Range':'','Guarantee Period':'','Reason':'Reasons why this product is suitable based on the answer','Details':'Give details and features of this product'},{'Name':'','Summary':'','Cost':'','Insured Age Range':'','Guarantee Period':'','Reason':'Reasons why this product is suitable based on the answer','Details':'Give details and features of this product'}] Note that the JSON values MUST be in chinese. \nInsurance product list: "+products;
+	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner. You have asked the client about their Gender, Age, Annual Income, medical history and Non-liquid Assets. Client has replied with " + clientAnswer+".  Based on their answer, recommend the top three insurance products from the below list. Give your answer in the following JSON format: [{'Name':'','Summary':'','Cost':'','Insured Age Range':'','Guarantee Period':'','Reason':'Reasons why this product is suitable based on the answer','Details':'Give details and features of this product'},{'Name':'','Summary':'','Cost':'','Insured Age Range':'','Guarantee Period':'','Reason':'Reasons why this product is suitable based on the answer','Details':'Give details and features of this product'},{'Name':'','Summary':'','Cost':'','Insured Age Range':'','Guarantee Period':'','Reason':'Reasons why this product is suitable based on the answer','Details':'Give details and features of this product'}] {chineseModifier} \nInsurance product list: "+products;
+
+    if (req.query.language == "Chinese"){
+      prompt = prompt.replace("{chineseModifier}", "Note that the JSON values MUST be in chinese.");
+    } else {
+           prompt = prompt.replace("{chineseModifier}", "Note that the JSON values MUST be in english.");
+    }
 
 	var result = await processPromptData(prompt,false);
 	console.log(result);
@@ -675,7 +712,13 @@ app.post('/recommendPackages', async (req, res) => {
 app.post('/generateSimulation', async (req, res) => {
   var target =req.query.target;
   
-  var prompt = `You are an professional insurance officer. Based on the specified target client: ${target}, generate a simulated conversation between the client and an insurance officer. The scenario can be something the target client faces on a daily basis for example if the target client is a young family, the scenario can be where they have a child and are asking about what life insurance they should purchase. Give your answer in the following JSON format: [{"Client":"","Agent":""},{"Client":"","Agent":""}]. The JSON values MUST be in chinese`
+  var prompt = `You are an professional insurance officer. Based on the specified target client: ${target}, generate a simulated conversation between the client and an insurance officer. The scenario can be something the target client faces on a daily basis for example if the target client is a young family, the scenario can be where they have a child and are asking about what life insurance they should purchase. Give your answer in the following JSON format: [{"Client":"","Agent":""},{"Client":"","Agent":""}]. {chineseModifier}`
+
+    if (req.query.language == "Chinese"){
+      prompt = prompt.replace("{chineseModifier}", "The JSON values MUST be in chinese");
+    } else {
+           prompt = prompt.replace("{chineseModifier}", "");
+    }
 
   var result = await processPromptDataCustomToken(prompt,false,1000);
   console.log(result);
@@ -777,7 +820,7 @@ app.post('/upload', upload.array('pdfs[]'), async (req, res) => {
       //fs.writeFileSync(path.join(__dirname, 'uploads', "pdfTxt.txt"), pdfText);
 	  //await langchainFunctions.langchainCreateVectorStore("uploads\\" + path.basename(fileNames[i]).replace('.pdf', '.txt'));
 	  
-	  
+                                              
       // Insert the uploaded file's name into the "uploadInfo" table
       console.log('Inserting into uploadinfo ' + fileNames[0]);    
       //await processPromptData(pdfText, req.body.medicineInput, fileNames[i], '');
@@ -788,6 +831,14 @@ app.post('/upload', upload.array('pdfs[]'), async (req, res) => {
     prompt = prompt.replace("{txt}", pdfText);
 	prompt = prompt.replace("{policy}", req.body.policy);
 	prompt = prompt.replace("{coverage}", req.body.coverage);
+
+  if (req.body.language == "Chinese"){
+    prompt = prompt.replace("{chineseModifier}", "The values of the JSON MUST be in Chinese simplified. ");
+  } else {
+    prompt = prompt.replace("{chineseModifier}", "");
+  }
+
+
     fs.writeFileSync('test.txt', prompt);
 	var result = await processPromptData(prompt, false);
 	result = result.match(/\{[\s\S]*?\}/)[0];

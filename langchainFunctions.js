@@ -126,7 +126,7 @@ async function langchainCreateVectorStore(filePath){
   if (cost <= 1) {
     // 12. Initialize the OpenAI language model
     const model = new OpenAI({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	});
 
     let vectorStore;
@@ -143,7 +143,7 @@ async function langchainCreateVectorStore(filePath){
       vectorStore = await HNSWLib.fromDocuments(
         splitDocs,
         new OpenAIEmbeddings({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 		})
       );
       // 17. Save the vector store to the specified path
@@ -163,7 +163,7 @@ async function langchainProcessQuestions(filePath, questionListString){
 
     // 12. Initialize the OpenAI language model
     const model = new OpenAI({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	});
 
     let vectorStore;
@@ -176,7 +176,7 @@ async function langchainProcessQuestions(filePath, questionListString){
       vectorStore = await HNSWLib.load(
         VECTOR_STORE_PATH,
         new OpenAIEmbeddings({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	})
       );
       console.log("Vector store loaded.");
@@ -209,7 +209,7 @@ async function langchainProcessOneQuestion(filePath, question){
 
     // 12. Initialize the OpenAI language model
     const model = new OpenAI({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	});
 
     let vectorStore;
@@ -222,7 +222,7 @@ async function langchainProcessOneQuestion(filePath, question){
       vectorStore = await HNSWLib.load(
         VECTOR_STORE_PATH,
         new OpenAIEmbeddings({
-		openAIApiKey: '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'
+		openAIApiKey: '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'
 	})
       );;
       console.log("Vector store loaded.");

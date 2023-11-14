@@ -1,4 +1,4 @@
-You are an professional insurance officer. Based on the below text of a motor accident form, extract the details specified below. The wording must be professional and thorough. Give your answer in the below JSON format The values of the JSON MUST be in Chinese simplified. 
+You are an professional insurance officer. Based on the below text of a motor accident form, extract the details specified below. The wording must be professional and thorough. Give your answer in the below JSON format. 
 {
   "TypeOfDocument":"",
   "Diagnosis":"",
@@ -12,8 +12,8 @@ You are an professional insurance officer. Based on the below text of a motor ac
   "Recommendation":"Based on the details, the policy purchased and the policy coverage, decide whether the claim should be approved, declined, or that more information is needed e.g. photographic evidence. Give a reason and a thorough analysis as to why you gave your answer."
 }
 
-Insurance Policy purchased:重大疾病
-Policy Coverage: 在10万美元以内德所有重大疾病和手术费用
+Insurance Policy purchased:Critical Ilnesses
+Policy Coverage: Critical Illnesses and surgery fees within 100k
 Text is below:
 
 

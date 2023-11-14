@@ -76,41 +76,45 @@
 	<div style = "margin-left:150px;margin-right:150px" />
     <nav class="topbar navbar navbar-expand-md navbar-light mb-4 barHeading" style="background:rgb(145, 145, 145)" >
 	<img src = "img/logo.png"></img>
-	<a style="color:white" href="#" class="navbar-brand"><b>智能核保</b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+	<a style="color:white" href="#" class="navbar-brand"><b><span lang="en">Claim AI Assistant</span><span lang="cn">智能核保</span></b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
         <div id="bs-navbar-collapse-1" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto"></ul>
         </div>
+        <span style="display:None" id = "currentLanguage">English</span>
+        <button type="button" onclick="eng()" style="color:white" class="btn btn-link">ENG</button>
+        <button type="button" onclick="cn()" style="color:white" class="btn btn-link">中文</button>
+
     </nav>
     <div class="container-fluid" style = "padding-left:0;padding-right:0">
         <div class="row">
             <div class="col-md-8">
-                <nav class="rounded-top navbar navbar-expand-md navbar-light w-100 barHeading" style="background:rgb(38, 65, 148)" ><a href="#" class="navbar-brand text-white"><b>理赔信息</b></a><button id="button6" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-2" data-target="#bs-navbar-collapse-2" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+                <nav class="rounded-top navbar navbar-expand-md navbar-light w-100 barHeading" style="background:rgb(38, 65, 148)" ><a href="#" class="navbar-brand text-white"><b><span lang="en">Claim Information</span><span lang="cn">理赔信息</span></b></a><button id="button6" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-2" data-target="#bs-navbar-collapse-2" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
                     <div id="bs-navbar-collapse-2" class="collapse navbar-collapse"></div>
                 </nav>
 				
 				<div class="position-relative">
 					<form class="container border input-sm" style="padding-top:20px">
                     <div class="row">
-                        <fieldset class="form-group col-md-6"><b><label>保单类型</label></b><input type="text" class="form-control" id="policy" value="重大疾病"></fieldset>
-                        <fieldset class="form-group col-md-6"><b><label>保障范围</label></b><input type="text" class="form-control" autocomplete="off" id="coverage" value="在10万美元以内德所有重大疾病和手术费用"></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Claim Type</span><span lang="cn">保单类型</span></label></b><input type="text" class="form-control" id="policy" value="重大疾病"></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Coverage</span><span lang="cn">保障范围</span></label></b><input type="text" class="form-control" autocomplete="off" id="coverage" value="在10万美元以内德所有重大疾病和手术费用"></fieldset>
                     </div>
                     <div class="row">
-                        <fieldset class="form-group col-md-6"><b><label>文档名称</label></b><input type="text" class="form-control" autocomplete="off" id="TypeOfDocument" value=""></fieldset>
-                        <fieldset class="form-group col-md-6"><b><label>诊断结果</label></b><input type="text" class="form-control" autocomplete="off" id="Diagnosis" value=""></fieldset>
-                        <fieldset class="form-group col-md-6"><b><label>门（急）诊病例</label></b><input type="text" class="form-control" autocomplete="off" id="Symptoms" value=""></fieldset>
-                        <fieldset class="form-group col-md-6"><b><label>主治医师</label></b><input type="text" class="form-control" autocomplete="off" id="AttendingPhysician" value=""></fieldset>
-                        <fieldset class="form-group col-md-6"><b><label>需要住院</label></b><input type="text" class="form-control" autocomplete="off" id="HospitalizationRequired" value=""></fieldset>
-                        <fieldset class="form-group col-md-6"><b><label>就诊医院</label></b><input type="text" class="form-control" autocomplete="off" id="HospitalName" value=""></fieldset>
-                        <fieldset class="form-group col-md-6"><b><label>是否有工作能力?</label></b><input type="text" class="form-control" autocomplete="off" id="IsPatientAbleToPerformJobDuties" value=""></fieldset>
-                        <fieldset class="form-group col-md-6"><b><label>是否需要手术?</label></b><input type="text" class="form-control" autocomplete="off" id="SurgeryRequired" value=""></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Document Type</span><span lang="cn">文档名称</span></label></b><input type="text" class="form-control" autocomplete="off" id="TypeOfDocument" value=""></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Diagnosis</span><span lang="cn">诊断结果</span></label></label></b><input type="text" class="form-control" autocomplete="off" id="Diagnosis" value=""></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Symptoms</span><span lang="cn">门（急）诊病例</span></label></b><input type="text" class="form-control" autocomplete="off" id="Symptoms" value=""></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Attending Physician</span><span lang="cn">主治医师</span></label></b><input type="text" class="form-control" autocomplete="off" id="AttendingPhysician" value=""></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Hospitalization Required</span><span lang="cn">需要住院</span></label></b><input type="text" class="form-control" autocomplete="off" id="HospitalizationRequired" value=""></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Hospital Name</span><span lang="cn">就诊医院</span></label></b><input type="text" class="form-control" autocomplete="off" id="HospitalName" value=""></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Is Patient Able To Perform Job Duties</span><span lang="cn">是否有工作能力?</span></label></b><input type="text" class="form-control" autocomplete="off" id="IsPatientAbleToPerformJobDuties" value=""></fieldset>
+                        <fieldset class="form-group col-md-6"><b><label><span lang="en">Surgery Required</span><span lang="cn">是否需要手术?</span></label></b><input type="text" class="form-control" autocomplete="off" id="SurgeryRequired" value=""></fieldset>
                     </div>
-                    <fieldset class="form-group"><b><label>描述</label></b><textarea type="text" rows="4" class="form-control input-sm-textarea" autocomplete="off" id="SummaryOfTheWholeFile" value=""></textarea></fieldset>
-					<fieldset class="form-group"><img src = "img/neutronblack.svg" style="width:18px;height:18px;"></img><b><label>分析</label></b><textarea type="text" rows="4" class="form-control input-sm-textarea" autocomplete="off" id="Recommendation" value=""></textarea></fieldset>
+                    <fieldset class="form-group"><b><label><span lang="en">Description</span><span lang="cn">描述</span></label></b><textarea type="text" rows="4" class="form-control input-sm-textarea" autocomplete="off" id="SummaryOfTheWholeFile" value=""></textarea></fieldset>
+					<fieldset class="form-group"><img src = "img/neutronblack.svg" style="width:18px;height:18px;"></img><b><label><span lang="en">Analysis</span><span lang="cn">分析</span></label></b><textarea type="text" rows="4" class="form-control input-sm-textarea" autocomplete="off" id="Recommendation" value=""></textarea></fieldset>
                     <fieldset class="form-group offset-lg-0 center">
-					<button id="button1" class="btn darkButton input-sm" type="button"><img src = "img/save.png" style="width:18px;height:18px;"></img> 保存</button>
+					<button id="button1" class="btn darkButton input-sm" type="button"><img src = "img/save.png" style="width:18px;height:18px;"></img> <span lang="en">Save</span><span lang="cn">保存</span></button>
 					<input class="btn darkButton" type="file" id="pdfs" name = "pdfs" >
-					<button id="button2" class="btn darkButton input-sm" type="button" onclick="uploadPDF()"><img src = "img/upload.png" style="width:18px;height:18px;"></img>上传文档</button>
-					<button id="button3" onclick="uploadPolicyDoc()" class="btn darkButton input-sm" type="button"><img src = "img/approve.png" style="width:18px;height:18px;"></img>批准</button><button id="button4" class="btn btn-danger mr-3 input-sm" type="button"><img src = "img/reject.png" style="width:18px;height:18px;"></img>  拒绝</button></fieldset>
+					<button id="button2" class="btn darkButton input-sm" type="button" onclick="uploadPDF()"><img src = "img/upload.png" style="width:18px;height:18px;"></img><span lang="en">Upload</span><span lang="cn">上传文档</span></button>
+					<button id="button3" onclick="uploadPolicyDoc()" class="btn darkButton input-sm" type="button"><img src = "img/approve.png" style="width:18px;height:18px;"></img><span lang="en">Approve</span><span lang="cn">批准</span></button><button id="button4" class="btn btn-danger mr-3 input-sm" type="button"><img src = "img/reject.png" style="width:18px;height:18px;"></img>  <span lang="en">Reject</span><span lang="cn">拒绝</span></button></fieldset>
 				</form>
 				<div id="formSpinner" class="sk-circle-fade" style="display: none;position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); width: 6rem; height: 6rem;">
 				  <div class="sk-circle-fade-dot"></div>
@@ -137,7 +141,7 @@
             </div>
             <div class="col-md-4">
                 <div class="container mb-4" style = "padding-left:0;padding-right:0">
-                    <nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  智能聊天</b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+                    <nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  <span lang="en">Chat</span><span lang="cn">智能聊天</span></b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
                         <div id="bs-navbar-collapse-4" class="collapse navbar-collapse"></div>
 						
                     </nav>
@@ -166,13 +170,13 @@
 					<div class="input-group mb-3">
 					  <input value="" id="questionInput" class="form-control" placeholder="问任何与索赔或保单相关的问题" type="text" />
 					  <div class="input-group-append">
-						<button type="button" class="btn darkButton" onclick="processSingleQuestion()">发送</button>
+						<button type="button" class="btn darkButton" onclick="processSingleQuestion()"><span lang="en">Send</span><span lang="cn">发送</span></button>
 					  </div>
 					</div>
 
 					
                 <div class="container" style = "padding-left:0;padding-right:0">
-                    <nav class="rounded navbar navbar-expand-md navbar-light w-100 barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/email.png" style="width:23px;height:23px;"></img><b>  邮件</b></a><button id="button7" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-3" data-target="#bs-navbar-collapse-3" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+                    <nav class="rounded navbar navbar-expand-md navbar-light w-100 barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/email.png" style="width:23px;height:23px;"></img><b>  <span lang="en">Email</span><span lang="cn">邮件</span></b></a><button id="button7" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-3" data-target="#bs-navbar-collapse-3" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
                         <div id="bs-navbar-collapse-3" class="collapse navbar-collapse"></div>
                     </nav>
 					
@@ -200,9 +204,9 @@
 					
 				</div>
 					<div class="input-group mb-3 center" style="padding-top:11px">
-					  <button type="button" class="btn darkButton" onclick="generateEmail()"><img src = "img/neutronwhite.svg" style="color:white;width:18px;height:18px;"></img>生成邮件回复</button>
+					  <button type="button" class="btn darkButton" onclick="generateEmail()"><img src = "img/neutronwhite.svg" style="color:white;width:18px;height:18px;"></img><span lang="en">Generate Email Reply</span><span lang="cn">生成邮件回复</span></button>
 					  <div class="input-group-append">
-						<button type="button" class="btn darkButton" onclick="">发送</button>
+						<button type="button" class="btn darkButton" onclick=""><span lang="en">Send</span><span lang="cn">发送</span></button>
 					  </div>
 					</div>
 				
@@ -214,7 +218,7 @@
 	   <script type="text/javascript" src="./js/bootstrap.esm.min.js"></script>
 	      <script type="text/javascript" src="./js/bootstrap.min.js"></script>
 	<script src="script.js"></script>
-
+	<script src="language.js"></script>
 </body>
 
 </html>

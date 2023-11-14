@@ -6,5 +6,5 @@ HospitalizationRequired: 是
 HospitalName: 上海第一人民医院
 IsPatientAbleToPerformJobDuties: 没有
 SurgeryRequired: 是
-SummaryOfTheWholeFile: 该案件涉及一位购买了重大疾病保险的投保人，被诊断为急性淋巴白血病。投保人近期出现了疲劳、乏力、皮肤苍白、发热、容易出血和淋巴结肿大的症状，由主治医师王某某在上海第一人民医院进行了住院治疗。投保人目前无法进行工作，需要进行手术。
-Recommendation: 根据保单条款，投保人购买的重大疾病保险覆盖了所有在10万美元以内的重大疾病和手术费用。因此，投保人的理赔申请应该被批准。然而，我们需要更多的信息，例如手术的详细费用和医疗记录，以便进行更准确的赔付。
+SummaryOfTheWholeFile: The insured has been diagnosed with Acute Lymphoblastic Leukemia and has been exhibiting symptoms such as fatigue, weakness, pale skin, fever, easy bleeding, and swollen lymph nodes. The attending physician is Wang. The patient has been hospitalized at the Shanghai First People's Hospital and is unable to perform job duties. Surgery is required.
+Recommendation: The claim should be approved. The policy purchased by the insured covers critical illnesses and surgery fees up to 100k. The insured's condition of Acute Lymphoblastic Leukemia falls under the category of critical illnesses, and the required surgery is also covered under the policy. Therefore, based on the details provided and the policy coverage, the claim is valid and should be approved.

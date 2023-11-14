@@ -62,12 +62,21 @@ function appendTableToPage(id,age, guarantee) {
 //chatgpt
 async function displayProductDetailsAndReason(name, details,reason) {
 	await talkCustom(reason);
-	updateConversation("","Here are details and features of "+name+":"+details);
+	updateConversation("",details);
 }
 
 //chatgpt
 function appendServiceChoiceToConversation() {
   var hiddenElement = document.getElementById('serviceChoiceElement');
+  var conversationElement = document.getElementById('conversation');
+
+  if (hiddenElement && conversationElement) {
+    hiddenElement.style.display = ''; // Show the hidden element
+    conversationElement.appendChild(hiddenElement);
+  }
+}
+function appendServiceChoiceEngToConversation() {
+  var hiddenElement = document.getElementById('serviceChoiceElementEng');
   var conversationElement = document.getElementById('conversation');
 
   if (hiddenElement && conversationElement) {
@@ -288,9 +297,15 @@ async function uploadImg(){
 	  
 	  
 	} else {
-		
+		var language   = document.getElementById("currentLanguage").innerText ;
+
+if(language	 == "Chinese"){
 		updateConversation("","我是您的智能保险助手。我可以如何协助您？");
 		appendServiceChoiceToConversation();
+	} else {
+		updateConversation("","I am your Intelligent Insurance Assistant, how may I assist you？");
+		appendServiceChoiceEngToConversation();
+	}
 	}
 	//updateConversation("","I'm your Intelligent Insurance Assistant. How may I assist you?");
 	//  appendServiceChoiceToConversation();
@@ -312,8 +327,16 @@ export async function showInsuranceOptions(){
 }
 
 export async function getMoreInfo(){
+var language   = document.getElementById("currentLanguage").innerText ;
+
+if(language	 == "Chinese"){
 	await talkCustom("为了为您提供合适的医疗保险产品，我需要更多信息。");
 		updateConversation("","为了为您提供合适的医疗保险产品，请提供以下信息：性别、年龄、年收入、医疗历史和非流动资产。");
+}else {
+		await talkCustom("In order to recommend the most suitable medical insurance	products, I'm going to need more information");
+		updateConversation("","In order to recommend the most suitable medical insurance products, please provide me with your gender, age, annual income, medical history and non-liquid assets.");
+}
+
 	 //appendInsuranceChoiceToConversation();	
 	   var hiddenElement = document.getElementById('products');
 
@@ -324,6 +347,8 @@ export async function getMoreInfo(){
 }
 
 connectButton.onclick = async () => {
+	var language   = document.getElementById("currentLanguage").innerText ;
+
 	//disableChat();
 		if (didMode){
 		console.log("CONNECTING ");
@@ -370,12 +395,21 @@ connectButton.onclick = async () => {
 	
 	uploadButton.style.display = 'None';
 	
+	if (language == "Chinese"){
+		await talkCustom("我是您的智能保险助手。我可以如何协助您？");
+		updateConversation("","我是您的智能保险助手。我可以如何协助您？");
+		appendServiceChoiceToConversation();
+	} else {
+		await talkCustom("I am your Intelligent Insurance Assistant, how may I assist you？");
+		updateConversation("","I am your Intelligent Insurance Assistant, how may I assist you？");
+		appendServiceChoiceEngToConversation();
+	}
 	
-	await talkCustom("我是您的智能保险助手。我可以如何协助您？");
 	
 	}
-	updateConversation("","我是您的智能保险助手。我可以如何协助您？");
-	appendServiceChoiceToConversation();
+
+	
+	
 	
 }
 
@@ -390,11 +424,17 @@ async function talkCustom(content) {
   if (peerConnection?.signalingState === 'stable' || peerConnection?.iceConnectionState === 'connected') {
 	  console.log("talku!2"+content);
 	   
-	
+	var language   = document.getElementById("currentLanguage").innerText ;
+
 	var voiceID = "";
 	//https://speech.microsoft.com/portal/voicegallery
+	if (language=="Chinese"){
+		voiceID = "zh-CN-XiaochenNeural";
+	}else{
+			voiceID = "en-US-JennyNeural";
+	}
 	//voiceID = "en-US-JennyNeural";
-	voiceID = "zh-CN-XiaochenNeural";
+	
 	
     talkResponse = await fetch(`${DID_API.url}/talks/streams/${streamId}`,
       {
@@ -441,7 +481,11 @@ async function talkCustom(content) {
 		clearChat();
 		//await talkCustom("Medical insurance is primarily used for the reimbursement of medical expenses. Key points to consider before choose a product are:\n1. Priority allocation of hospitalization medical insurance.\n2. If you cannot afford millions in medical coverage, you can opt for anti-cancer medical insurance.\n3. Depending on your specific situation, consider supplementing with other medical insurance.\nPlease refer below for the recommended products, click the Images for more details.");
 		
-		const response = await fetch(`/answerQuestion?clientAnswer=${encodeURIComponent(clientAnswer)}`, {
+		var language   = document.getElementById("currentLanguage").innerText ;
+        //const response = await fetch(`/generateEmail?language=${encodeURIComponent(language)}`
+		//const response = await fetch(`/recommendPackages?clientAnswer=${encodeURIComponent(clientAnswer)}&language=${
+
+		const response = await fetch(`/answerQuestion?clientAnswer=${encodeURIComponent(clientAnswer)}&language=${encodeURIComponent(language)}`, {
 		  method: 'POST',
 		});
 
@@ -464,6 +508,8 @@ async function talkCustom(content) {
 		updateConversation(clientAnswer,"");
 		clearChat();
 		//await talkCustom("Medical insurance is primarily used for the reimbursement of medical expenses. Key points to consider before choose a product are:\n1. Priority allocation of hospitalization medical insurance.\n2. If you cannot afford millions in medical coverage, you can opt for anti-cancer medical insurance.\n3. Depending on your specific situation, consider supplementing with other medical insurance.\nPlease refer below for the recommended products, click the Images for more details.");
+
+
 		
 		const response = await fetch(`/answerInsuranceQuestion?clientAnswer=${encodeURIComponent(clientAnswer)}`, {
 		  method: 'POST',
@@ -492,8 +538,10 @@ export async function recommendPackage() {
 		updateConversation(clientAnswer,"");
 		clearChat();
 		//await talkCustom("Medical insurance is primarily used for the reimbursement of medical expenses. Key points to consider before choose a product are:\n1. Priority allocation of hospitalization medical insurance.\n2. If you cannot afford millions in medical coverage, you can opt for anti-cancer medical insurance.\n3. Depending on your specific situation, consider supplementing with other medical insurance.\nPlease refer below for the recommended products, click the Images for more details.");
-		
-		const response = await fetch(`/recommendPackages?clientAnswer=${encodeURIComponent(clientAnswer)}`, {
+		 var language   = document.getElementById("currentLanguage").innerText ;
+
+        //const response = await fetch(`/generateEmail?language=${encodeURIComponent(language)}`
+		const response = await fetch(`/recommendPackages?clientAnswer=${encodeURIComponent(clientAnswer)}&language=${encodeURIComponent(language)}`, {
 		  method: 'POST',
 		});
 
@@ -512,8 +560,14 @@ export async function recommendPackage() {
 		}
 		
 		  document.getElementById('askSpinner').style.display = 'None';
+		  if(language=="Chinese"){
 		updateConversation("", "根据您的回答，以下是最适合您的医疗保险产品。点击产品以获取更多详细信息");
 		await talkCustom("以下是推荐的产品，请点击产品了解更多信息，同时也可以随时提出您自己的问题。");
+		  }else{
+		  			updateConversation("", "According to your response, here are the most suitable Medical Insurance Products. Click 'More Details' to understand more about each product");
+		await talkCustom("Here are the most suitable products, click More Details to understand more. Feel free to also ask your own questions.");
+		  }
+
 		
 		enableAskQuestions();
 	

@@ -126,9 +126,9 @@
 					<div name = "product" style="display:None;font-size:10px;">
 						<p class="name" style="font-size:15px;font-weight:700">Test</p>
 						<p class = "summary" style="word-wrap:break-word;maxWidth:400px;word-break:break-all;">summary</p><!-- need use class as cloned element can only search for child by class -->
-						<p class = "cost">费用</p>
+						<p class = "cost"><span lang="en">Cost</span><span lang="cn">费用</span></p>
 						
-						<a href="#" class="moreDetails" >了解更多 ></a>
+						<a href="#" class="moreDetails" ><span lang="en">More Details ></span><span lang="cn">了解更多 ></span></a>
 
 					</div>
 					<div name = "productTable" style="display:None;font-size:10px;">
@@ -136,11 +136,11 @@
 
 						  <tbody>
 							<tr>
-							  <th scope="row">投保年龄</th>
+							  <th scope="row"><span lang="en">Insured Age</span><span lang="cn">投保年龄</span></th>
 							  <td class = "age" >Mark</td>
 							</tr>
 							<tr>
-							  <th scope="row">保证期</th>
+							  <th scope="row"><span lang="en">Guarantee Period</span><span lang="cn">保证期</span></th>
 							  <td class = "guarantee" >Jacob</td>
 							</tr>
 						  </tbody>
@@ -162,6 +162,22 @@
 	</div>
 </div>
 
+<div class="row" id="serviceChoiceElementEng" style="display: none; margin-bottom:10px;">
+	<div class = "col-md-3">
+		<a href="#" ><img id = "insure" style = "width:95px;height:95px" src = ".\insuranceHelperChatbot\insure - Copy.PNG" /></a>
+	</div>
+	<div class = "col-md-3 greyImage">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\claim - Copy.PNG" />
+	</div>
+	<div class = "col-md-3 greyImage">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\order - Copy.PNG" />
+	</div>
+		<div class = "col-md-3 greyImage">
+	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\others - Copy.PNG" />
+	</div>
+</div>
+
+
 <div class="row" id="insuranceChoiceElement" style="display: none; margin-bottom:10px;">
 	<div class = "col-md-3">
 		<a href="#" ><img id = "medical" style = "width:95px;height:95px" src = ".\insuranceHelperChatbot\med.PNG" /></a>
@@ -181,7 +197,7 @@
 	<div class="bg">
     <nav class="topbar navbar navbar-expand-md navbar-light mb-4 barHeading" style="background:rgb(145, 145, 145)" >
 	<img src = "img/logo.png"></img>
-	<a style="color:white" href="#" class="navbar-brand"><b>数字化保险咨询</b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+	<a style="color:white" href="#" class="navbar-brand"><b><span lang="en">Insurance Digital Consultant</span><span lang="cn">数字化保险咨询</span></b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
 			<div style = "display:">
 		 <input type="file" id="myfile" name="filename">
 	  <button id="upload-button" type="button">Upload</button>
@@ -203,13 +219,17 @@
         <div id="bs-navbar-collapse-1" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto"></ul>
         </div>
+        <span style="display:None" id = "currentLanguage">English</span>
+        <button type="button" onclick="eng()" style="color:white" class="btn btn-link">ENG</button>
+        <button type="button" onclick="cn()" style="color:white" class="btn btn-link">中文</button>
+
     </nav>
     <div class="container-fluid" style = "padding-left:0;padding-right:0">
         <div class="row">
             <div class="col-md-5">
 			
 				<div style = "padding-left:20px">
-						<nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  智能服务</b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+						<nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  <span lang="en">Chat</span><span lang="cn">智能服务</span></b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
                         <div id="bs-navbar-collapse-4" class="collapse navbar-collapse"></div>					
 						</nav>
 					
@@ -237,7 +257,7 @@
 					<div class="input-group mb-3">
 					  <input value="" id="questionInput" class="form-control" placeholder="" type="text" />
 					  <div class="input-group-append">
-						<button type="button" class="btn darkButton" id="send">发送</button>
+						<button type="button" class="btn darkButton" id="send"><span lang="en">Send</span><span lang="cn">发送</span></button>
 					  </div>
 					</div>
 				</div>
@@ -277,7 +297,7 @@
 	      <script type="text/javascript" src="./js/bootstrap.min.js"></script>
 	  <script type="module" src="insuranceHelperChatbot\streaming-client-api - chatbot.js"></script>
 		<script type="text/javascript" src="insuranceHelperChatbot\script-insuranceHelper.js"></script>
-		
+			<script src="language.js"></script>
 
 </body>
 

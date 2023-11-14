@@ -60,13 +60,15 @@ async function processSingleQuestion(){
 	try {
 		
 	  const formData = new FormData();
+    var language  = document.getElementById("currentLanguage").innerText;
+    formData.append('language', document.getElementById("currentLanguage").innerText);
 	  //formData.append('questionListString', questionsList);
 	  //formData.append('pdfText', pdfText);	
 	  formData.append('question', questionInput);
 		//formData.append('fileName', fileName); //need encodeURIComponent to make sure chinese filename isnt garbled
-		
+		console.log(formData);
 	document.getElementById('askSpinner').style.display = 'block';
-	const response = await fetch(`/processSingleQuestionLangchain?question=${encodeURIComponent(questionInput)}`, {
+	const response = await fetch(`/processSingleQuestionLangchain?question=${encodeURIComponent(questionInput)}&language=${encodeURIComponent(language)}`, {
 	  method: 'POST',
 	  body: formData
 	});
@@ -149,7 +151,16 @@ async function generateEmail() {
 
   document.getElementById('emailSpinner').style.display = 'block';
   try {
-    const response = await fetch('/generateEmail');
+
+      const formData = new FormData();
+      var language   = document.getElementById("currentLanguage").innerText ;
+       formData.append('language', document.getElementById("currentLanguage").innerText );
+
+    const response = await fetch(`/generateEmail?language=${encodeURIComponent(language)}`, {
+      method: 'POST',
+      body: formData,
+    });
+    //const response = await fetch('/generateEmail');
 
 
 
@@ -219,6 +230,7 @@ async function uploadPDF() {
   }
 	formData.append('coverage', document.getElementById("coverage").value);
     formData.append('policy', document.getElementById("policy").value);
+    formData.append('language', document.getElementById("currentLanguage").innerText);
   document.getElementById('formSpinner').style.display = 'block';
   try {
     const response = await fetch('/upload', {
