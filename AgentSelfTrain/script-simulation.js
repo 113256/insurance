@@ -57,7 +57,7 @@ function askCustomTarget(){
   }
 
   try{  document.getElementById('send').removeEventListener('click', generateSimulation);}catch(e){
-    
+
   }
 document.getElementById('send').addEventListener('click', processCustomTarget);
 
@@ -156,7 +156,7 @@ async function startSimulation(target){
   
   clearChatHistory();
     
-    const response = await fetch(`/startSimulation?target=${encodeURIComponent(customTarget)}`,{
+    const response = await fetch(`/startSimulation?target=${encodeURIComponent(customTarget)}&language=${encodeURIComponent(language)}`,{
      method: 'POST',
     });
     responseTxt = await response.text();
