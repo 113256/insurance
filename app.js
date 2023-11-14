@@ -728,12 +728,12 @@ app.post('/startSimulation', async (req, res) => {
   console.log('File deleted successfully');
 });
 
- var prompt = `You are a ${req.query.target} in a conversation with an insurance officer about a scneario. The scenario can be something the target client faces on a daily basis for example if you are a young family, the scenario can be where you have a child and are asking about what life insurance they should purchase, Come up with an enquiry to the insurance officer. {chineseModifier}`
+ var prompt = `You are a ${req.query.target} in a conversation with an insurance officer about a scneario. The scenario can be something the target client faces on a daily basis for example if you are a young family, the scenario can be where you have a child and are asking about what life insurance they should purchase, Come up with an enquiry to the insurance officer, {chineseModifier}`
 
 
 
     if (req.query.language == "Chinese"){
-      prompt = prompt.replace("{chineseModifier}", "The answer MUST be in chinese");
+      prompt = prompt.replace("{chineseModifier}", "Write the enquiry in Chinese");
     } else {
            prompt = prompt.replace("{chineseModifier}", "");
     }
