@@ -661,10 +661,14 @@ if (req.query.language == "Chinese"){
   
   app.post('/answerInsuranceQuestion', async (req, res) => {
 	var clientAnswer =req.query.clientAnswer;
-	
-	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner: "+clientAnswer+",\.  answer MUST be in chinese";
-
-	var result = await processPromptDataCustomToken  (prompt,false,300);
+  var language = req.query.language;
+	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner: "+clientAnswer+",\n  {chineseModifier}";
+if(language=="Chinese"){
+  prompt = prompt.replace("{chineseModifier}", "answer MUST be in chinese");
+} else {
+  prompt = prompt.replace("{chineseModifier}", "");
+}
+	var result = await processPromptDataCustomToken  (prompt,false,100);
 	console.log(result);
 	return res.status(200).send(result);
 	

@@ -138,14 +138,15 @@ function updateConversation(prompt, response) {
   promptElement.style.color = '#000'; // Optional: set prompt text color
   responseElement.style.color = '#000'; // Optional: set response text color
   
-promptElement.style.width = '500px'; // Set the  width
+promptElement.style.width = '100%'; // Set the  width
 //promptElement.style.wordWrap = 'break-word'; // Break long words onto the next line
-promptElement.style.maxWidth = '500px'; // Set the maximum width
+promptElement.style.maxWidth = '100%'; // Set the maximum width
+//promptElement.style.maxWidth = '500px'; // Set the maximum width
 promptElement.style.wordBreak = 'normal'; // Break long words
 
-responseElement.style.width = '500px'; // Set the  width
+responseElement.style.width = '100%'; // Set the  width
 //responseElement.style.wordWrap = 'break-word'; // Break long words onto the next line
-responseElement.style.maxWidth = '500px'; // Set the maximum width
+responseElement.style.maxWidth = '100%'; // Set the maximum width
 responseElement.style.wordBreak = 'normal'; // Break long words
   
 // Style for prompt element
@@ -502,7 +503,7 @@ async function talkCustom(content) {
 	
 	  export async function askInsuranceQuestion() {
 	  console.log("ASJSSS");
-		
+		 var language   = document.getElementById("currentLanguage").innerText ;
 		  document.getElementById('askSpinner').style.display = 'block';
 		var clientAnswer = document.getElementById("questionInput").value;
 		updateConversation(clientAnswer,"");
@@ -511,7 +512,7 @@ async function talkCustom(content) {
 
 
 		
-		const response = await fetch(`/answerInsuranceQuestion?clientAnswer=${encodeURIComponent(clientAnswer)}`, {
+		const response = await fetch(`/answerInsuranceQuestion?clientAnswer=${encodeURIComponent(clientAnswer)}&language=${encodeURIComponent(language)}`, {
 		  method: 'POST',
 		});
 

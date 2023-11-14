@@ -107,6 +107,14 @@ function enableChat(){
 
 
 function appendTrainingToPage(id, title, summary) {
+
+	const conversationElement = document.getElementById('class'+id);
+  // Clear all child elements
+  while (conversationElement.firstChild) {
+
+    conversationElement.removeChild(conversationElement.firstChild);
+  }
+
   var hiddenElement =  document.getElementsByName('class')[0].cloneNode(true);
     hiddenElement.getElementsByClassName("name")[0].innerText = title;
   hiddenElement.getElementsByClassName("summary")[0].innerText = summary;
@@ -117,6 +125,14 @@ function appendTrainingToPage(id, title, summary) {
 }
 
 function appendTrainingToPageChinese(id, title, summary) {
+
+	const conversationElement = document.getElementById('class'+id);
+  // Clear all child elements
+  while (conversationElement.firstChild) {
+
+    conversationElement.removeChild(conversationElement.firstChild);
+  }
+	
   var hiddenElement =  document.getElementsByName('classChi')[0].cloneNode(true);
     hiddenElement.getElementsByClassName("name")[0].innerText = title;
   hiddenElement.getElementsByClassName("summary")[0].innerText = summary;
