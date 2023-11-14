@@ -167,8 +167,8 @@ if (prompt != "")
 conversationElement.appendChild(promptElement);
 
 } else {
-	responseElement.style.width = '500px'; // Set the  width
-	responseElement.style.maxWidth = '500px';
+	responseElement.style.width = '100%'; // Set the  width
+	responseElement.style.maxWidth = '100%';
 	responseElement.style.float = ''; // if no prompt, put response in the center
 	
 }
