@@ -75,7 +75,17 @@ conversationElement.appendChild(responseElement);
 
 
 function appendClassChoiceToConversation() {
-  var hiddenElement = document.getElementById('trainingChoice');
+  var hiddenElement = document.getElementById('trainingChoice').cloneNode(true);
+  var conversationElement = document.getElementById('conversation');
+
+  if (hiddenElement && conversationElement) {
+    hiddenElement.style.display = ''; // Show the hidden element
+    conversationElement.appendChild(hiddenElement);
+  }
+}
+
+function appendClassChoiceToConversationChinese() {
+  var hiddenElement = document.getElementById('trainingChoiceChinese').cloneNode(true);
   var conversationElement = document.getElementById('conversation');
 
   if (hiddenElement && conversationElement) {
@@ -106,7 +116,19 @@ function appendTrainingToPage(id, title, summary) {
     productPlaceholder.appendChild(hiddenElement);
 }
 
+function appendTrainingToPageChinese(id, title, summary) {
+  var hiddenElement =  document.getElementsByName('classChi')[0].cloneNode(true);
+    hiddenElement.getElementsByClassName("name")[0].innerText = title;
+  hiddenElement.getElementsByClassName("summary")[0].innerText = summary;
+  
+  var productPlaceholder = document.getElementById('class'+id);   
+    hiddenElement.style.display = ''; // Show the hidden element
+    productPlaceholder.appendChild(hiddenElement);
+}
+
 async function recommendTraining() {
+		var language   = document.getElementById("currentLanguage").innerText ;
+
 		 document.getElementById('askSpinner').style.display = 'block';
 		var clientAnswer = document.getElementById("questionInput").value;
 		
@@ -114,7 +136,7 @@ async function recommendTraining() {
 		clearChat();
 		//await talkCustom("Medical insurance is primarily used for the reimbursement of medical expenses. Key points to consider before choose a product are:\n1. Priority allocation of hospitalization medical insurance.\n2. If you cannot afford millions in medical coverage, you can opt for anti-cancer medical insurance.\n3. Depending on your specific situation, consider supplementing with other medical insurance.\nPlease refer below for the recommended products, click the Images for more details.");
 		
-		const response = await fetch(`/recommendTraining?clientAnswer=${encodeURIComponent(clientAnswer)}&trainType=${encodeURIComponent(chosenType)}`, {
+		const response = await fetch(`/recommendTraining?clientAnswer=${encodeURIComponent(clientAnswer)}&trainType=${encodeURIComponent(chosenType)}&language=${encodeURIComponent(language)}`, {
 		  method: 'POST',
 		});
 
@@ -132,7 +154,14 @@ async function recommendTraining() {
 		}
 		
 		  document.getElementById('askSpinner').style.display = 'None';
+
+	if (language=="Chinese"){
 		updateConversation("", "根据您的回答，已为您推荐最合适的培训课程");
+	} else {
+		updateConversation("", "Based on your response, the most suitable training courses have been recommended for you.");
+	}
+
+		
 		//await talkCustom("以下是推荐的产品，请点击产品了解更多信息，同时也可以随时提出您自己的问题。");
 		
 		enableAskQuestions();
@@ -141,7 +170,14 @@ async function recommendTraining() {
 
 function askExperience(type){
 	chosenType = type;
-	updateConversation("", "You have chosen "+type+", tell me more about your experience and the kind of "+type+" you want to learn");
+
+var language   = document.getElementById("currentLanguage").innerText ;
+	if (language=="Chinese"){
+		updateConversation("", "你选择了" + type + "，请告诉我更多关于你的经验以及你想学习的" + type + "的类型。");
+	} else {
+		updateConversation("", "You have chosen "+type+", tell me more about your experience and the kind of "+type+" you want to learn");
+	}
+
 	enableChat();
 }
 
@@ -161,11 +197,31 @@ function openPopup(event, url) {
 
 
 
+function reset(){
+	disableChat();
+	clearChatHistory();
+	var language   = document.getElementById("currentLanguage").innerText ;
+	if (language=="Chinese"){
+		updateConversation("","你好，我是你的训练助手，请在下面选择学习主题。");
+		appendClassChoiceToConversationChinese();
+	} else {
+		updateConversation("","Hello, I'm your training assistant, please select the learning topic below");
+		appendClassChoiceToConversation();
+	}
+	
+	
+}
 
+function clearChatHistory(){
+  const conversationElement = document.getElementById('conversation');
+  // Clear all child elements
+  while (conversationElement.firstChild) {
+
+    conversationElement.removeChild(conversationElement.firstChild);
+  }
+}
 // On page load, fetch the data and populate the table
 window.addEventListener('load', () => {
-	disableChat();
-	updateConversation("","Hello, I'm your training assistant, please select the learning topic below");
-	appendClassChoiceToConversation();
+	reset();
 
 });

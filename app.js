@@ -673,9 +673,14 @@ if (req.query.language == "Chinese"){
 app.post('/recommendTraining', async (req, res) => {
 	var clientAnswer =req.query.clientAnswer;
 	var trainType = req.query.trainType;
+  var language = req.query.language;
 	
-	var prompt = "You are an professional insurance training assistant. Based on the clients chosen type of training: "+trainType+" and their experience and preferences: " + clientAnswer+".  Recommend 4 training classes for them. Give your answer in the following JSON format: [{'Name':'','Summary':''},{'Name':'','Summary':''},{'Name':'','Summary':''},{'Name':'','Summary':''}] Note that the JSON values MUST be in chinese."
-
+	var prompt = "You are an professional insurance training assistant. Based on the clients chosen type of training: "+trainType+" and their experience and preferences: " + clientAnswer+".  Recommend 4 training classes for them. Give your answer in the following JSON format: [{'Name':'','Summary':''},{'Name':'','Summary':''},{'Name':'','Summary':''},{'Name':'','Summary':''}] {chineseModifier}"
+if(language=="Chinese"){
+  prompt = prompt.replace("{chineseModifier}", "Note that the JSON values MUST be in chinese.");
+} else {
+  prompt = prompt.replace("{chineseModifier}", "");
+}
 	var result = await processPromptData(prompt,false);
 	console.log(result);
 	result = result.match(/\[[\s\S]*\]/)[0];

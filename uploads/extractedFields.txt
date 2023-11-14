@@ -1,10 +1,10 @@
-TypeOfDocument: 重大疾病理赔表
-Diagnosis: 急性淋巴白血病
-Symptoms: 近期出现疲劳、乏力、皮肤苍白、发热、容易出血和淋巴结肿大的症状
-AttendingPhysician: 王某某
-HospitalizationRequired: 是
-HospitalName: 上海第一人民医院
-IsPatientAbleToPerformJobDuties: 没有
-SurgeryRequired: 是
-SummaryOfTheWholeFile: The insured has been diagnosed with Acute Lymphoblastic Leukemia and has been exhibiting symptoms such as fatigue, weakness, pale skin, fever, easy bleeding, and swollen lymph nodes. The attending physician is Wang. The patient has been hospitalized at the Shanghai First People's Hospital and is unable to perform job duties. Surgery is required.
-Recommendation: The claim should be approved. The policy purchased by the insured covers critical illnesses and surgery fees up to 100k. The insured's condition of Acute Lymphoblastic Leukemia falls under the category of critical illnesses, and the required surgery is also covered under the policy. Therefore, based on the details provided and the policy coverage, the claim is valid and should be approved.
+TypeOfDocument: Critical Illness Claim form
+Diagnosis: Acute Lymphoblastic Leukemia
+Symptoms: Fatigue, frequent infections, unexplained weight loss, easy bruising, and bone pain
+AttendingPhysician: Dr. Sarah Thompson, MD
+HospitalizationRequired: Yes
+HospitalName: Mercy General Hospital
+IsPatientAbleToPerformJobDuties: No
+SurgeryRequired: Yes
+SummaryOfTheWholeFile: The claimant has been diagnosed with Acute Lymphoblastic Leukemia, exhibiting symptoms such as fatigue, frequent infections, unexplained weight loss, easy bruising, and bone pain. The attending physician is Dr. Sarah Thompson, MD. The claimant requires hospitalization at Mercy General Hospital and is unable to perform job duties. Surgery is also required.
+Recommendation: The claim should be approved. The policy purchased covers Critical Illnesses and surgery fees within 100k. The claimant's diagnosis of Acute Lymphoblastic Leukemia falls under the category of Critical Illnesses, and the required surgery is covered under the policy. The claimant's inability to perform job duties further substantiates the severity of the illness. Therefore, based on the policy coverage and the details provided, the claim is valid and should be approved.

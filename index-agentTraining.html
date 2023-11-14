@@ -126,17 +126,19 @@
 </head>
 
 <body>
-
-							<div name = "class" style="display:None;font-size:15px; border:1px solid #dedede; padding-left:20px;padding-top:20px">
+							<div  style="display:None;" name = "class">
+							<img style = "width:100%" src = "insuranceHelperChatbot/agentTraining.png" />	
+							<div style="font-size:11px; border:1px solid #dedede; padding-left:20px;padding-top:20px">
 								<div style="text-align:center">
 								<p class="name" style="font-size:20px;font-weight:700; text-align:center">Test</p>
-								<p><span class="badge bg-secondary">Not Started</span> Updated Date: 11/11/2023</p>
+								<p><span class="badge bg-secondary">Not Started</span> <span lang="en">Updated Date: 11/11/2023</span><span lang="cn">日期: 11/11/2023</span></p>
 								</div>
 								<p style = "margin-left:20px" class="summary">test summary</p>
 								<div style = "margin-left:200px">
 								
 								</div>
 							</div>
+						</div>
 
 <div class="row" id="trainingChoice" style="display: None; margin-bottom:10px;">
 	<div class = "col-md-4">
@@ -151,12 +153,25 @@
 
 </div>
 
+<div class="row" id="trainingChoiceChinese" style="display: None; margin-bottom:10px;">
+	<div class = "col-md-4">
+		<a href = "#" onclick = askExperience("产品") ><img id = "insure" style = "width:95px;height:85px" src = ".\AgentSelfTrain\product - Copy.PNG" /></a>
+	</div>
+	<div class = "col-md-4">
+		<a href = "#"  onclick = askExperience("沟通")  ><img style = "width:95px;height:85px"  src = ".\AgentSelfTrain\comm - Copy.PNG" /></a>
+	</div>
+	<div class = "col-md-4">
+		<a  href = "#"  onclick = askExperience("销售") ><img style = "width:95px;height:85px"  src = ".\AgentSelfTrain\sales - Copy.PNG" /></a>
+	</div>
+
+</div>
+
 		
 	<div style = "" />
 	<div class="bg">
     <nav class="topbar navbar navbar-expand-md navbar-light barHeading" style="background:rgb(145, 145, 145)" >
 	<img src = "img/logo.png"></img>
-	<a style="color:white" href="#" class="navbar-brand"><b>代理人智能培训系统</b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+	<a style="color:white" href="#" class="navbar-brand"><b><span lang="en">Insurance GenAI Agent Self-Training</span><span lang="cn">代理人智能培训系统</span></b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
 			<div style = "display:None">
 		 <input type="file" id="myfile" name="filename">
 	  <button id="upload-button" type="button">Upload</button>
@@ -173,37 +188,39 @@
     </nav>
 	
 	    <nav class="topbar navbar navbar-expand-md navbar-light mb-4 barHeading" style="background:rgb(38, 65, 148)" >
-	<a style="color:white" href="#" class="navbar-brand"><b>Agent Self-Training</b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
-			
+	<a style="color:white" href="#" class="navbar-brand"><b><span lang="en">Agent Self-Training</span><span lang="cn">代理人培训</span></b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+			        <span style="display:None" id = "currentLanguage">English</span>
+        <button type="button" onclick="eng();reset();" style="color:white" class="btn btn-link">ENG</button>
+        <button type="button" onclick="cn();reset();" style="color:white" class="btn btn-link">中文</button>
     </nav>
 	
-    <div class="container-fluid" style = "padding-left:0;padding-right:0">
+    <div class="container-fluid" style = "padding-left:0;padding-right:0;height:660px">
 		
         <div class="row">
 			<div class = "col-md-2">
 					  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px;height:100%">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <span class="fs-4">My Training</span>
+      <span class="fs-4"><span lang="en">My Training</span><span lang="cn">我的培训</span></span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
         <a href="index-agentTraining.html" class="nav-link active" aria-current="page">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-          Agent Self-Training
+          <span lang="en">Agent Self-Training</span><span lang="cn">代理人培训</span>
         </a>
       </li>
       <li>
         <a href="index-onlineSupport.html" class="nav-link link-dark">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-          Online Support
+          <span lang="en">Online Support</span><span lang="cn">线上支援</span>
         </a>
       </li>
       <li>
         <a href="index-simulation.html" class="nav-link link-dark">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Simulation Via GenAI
+                   <span lang="en">Simulation Via GenAI</span><span lang="cn">模拟</span> 
         </a>
       </li>
       <li>
@@ -226,12 +243,12 @@
             <div class="col-md-3">
 			
 				<div style = "padding-left:20px">
-						<nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  智能服务</b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+						<nav class="rounded navbar navbar-expand-md navbar-light barHeading" style="background:rgb(38, 65, 148)"><a href="#" class="navbar-brand text-light"><img src = "img/chat.svg" style="width:23px;height:23px;"></img><b>  <span lang="en">Chat</span><span lang="cn">智能服务</span> </b></a><button id="button8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-4" data-target="#bs-navbar-collapse-4" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
                         <div id="bs-navbar-collapse-4" class="collapse navbar-collapse"></div>					
 						</nav>
 					
 					<div class="position-relative">
-						<div class="form-control" id="conversation" style="width: 100%; height: 450px; overflow-y: scroll">
+						<div class="form-control" id="conversation" style="width: 100%; height: 550px; overflow-y: scroll">
 							<!-- Your content here -->
 						</div>
 						<div id="askSpinner" class="sk-circle-fade" style="display: none;position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 6rem; height: 6rem;">
@@ -254,7 +271,7 @@
 					<div class="input-group mb-3">
 					  <input value="" id="questionInput" class="form-control" placeholder="" type="text" />
 					  <div class="input-group-append">
-						<button type="button" class="btn darkButton" id="send">发送</button>
+						<button type="button" class="btn darkButton" id="send"><span lang="en">Send</span><span lang="cn">发送</span></button>
 					  </div>
 					</div>
 				</div>
@@ -262,7 +279,7 @@
             </div>
 			
 			<div class="col-md-6" style = "">
-				<div class="" id="" style="background:white;  height: 550px; padding:10px">				
+				<div class="" id="" style="background:white;  height: 650px; padding:10px">				
 				<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 				  <ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Life Insurance Basics</a></li>
@@ -278,6 +295,7 @@
 
 					<div class = "row">
 						<div id = "class1" class = "col-md-6">
+
 
 						</div>
 							
@@ -301,7 +319,7 @@
 	  <!--<script type="module" src="insuranceHelperChatbot\streaming-client-api - chatbot.js"></script>-->
 		
 			<script type="text/javascript" src=".\AgentSelfTrain\script-agentTrain.js"></script>
-		
+			<script src="language.js"></script>
 
 </body>
 
