@@ -728,6 +728,7 @@ destroyButton.onclick = async () => {
 }
 
 async function destroy() {
+	try{
   await fetch(`${DID_API.url}/talks/streams/${streamId}`,
     {
       method: 'DELETE',
@@ -737,6 +738,9 @@ async function destroy() {
 
   stopAllStreams();
   closePC();
+} catch (e){
+	
+}
 }
 
 function onIceGatheringStateChange() {
