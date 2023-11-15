@@ -12,7 +12,7 @@ You are an professional insurance officer. Based on the below text of a critical
   "Recommendation":"Based on the details, the policy purchased and the policy coverage, decide whether the claim should be approved, declined, or that more information is needed e.g. doctors letter. Give a professional and thorough analysis as to why you gave your answer."
 }
 
-Insurance Policy purchased:{policy}
+Insurance Policy purchased:Critical Illness
 Policy Coverage: {coverage}
 Text is below:
 {txt}

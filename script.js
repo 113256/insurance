@@ -229,7 +229,7 @@ async function uploadPDF() {
     formData.append('pdfs[]', file, encodeURIComponent(file.name));
   }
 	formData.append('coverage', document.getElementById("coverage").value);
-    formData.append('policy', document.getElementById("policy").value);
+    formData.append('policy', "Critical Illness");
     formData.append('language', document.getElementById("currentLanguage").innerText);
   document.getElementById('formSpinner').style.display = 'block';
   try {
@@ -257,6 +257,7 @@ async function uploadPDF() {
 				//console.log(`Key: ${key}, Value: ${value}`);
 			  //}
 			}
+      document.getElementById("TypeOfDocument").value = "重大疾病"
 		}
 
       //alert(data.message); // Display the message from the response

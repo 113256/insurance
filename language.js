@@ -17,7 +17,7 @@ function eng(){
 
     try{
     	document.getElementById("coverage").value = "Critical Illnesses and surgery fees within 100k";
-    	document.getElementById("policy").value = "Critical Ilnesses";
+    	//document.getElementById("policy").value = "Critical Ilnesses";
     	document.getElementById	("questionInput").placeholder = "Ask any question about the claim";
     }catch(e){}	
 }
@@ -40,7 +40,7 @@ function cn(){
 
     try{
     	document.getElementById("coverage").value = "在10万美元以内的所有重大疾病和手术费用";
-    	document.getElementById("policy").value = "重大疾病";
+    	//document.getElementById("policy").value = "重大疾病";
     	document.getElementById	("questionInput").placeholder = "问任何与索赔或保单相关的问题";
     }catch(e){}
 

@@ -348,6 +348,10 @@ if(language	 == "Chinese"){
 }
 
 connectButton.onclick = async () => {
+	connect();
+}
+
+async function connect(){
 	var language   = document.getElementById("currentLanguage").innerText ;
 
 	//disableChat();
@@ -368,7 +372,7 @@ connectButton.onclick = async () => {
     method: 'POST',
     headers: {'Authorization': `Basic ${DID_API.key}`, 'Content-Type': 'application/json'},
     body: JSON.stringify({
-      source_url: uploadImgUrl
+      source_url: "https://jack-insurancedemo4.onrender.com/insuranceHelperChatbot/pic2.png"
     }),   
   });
 //source_url: uploadImgUrl
@@ -694,6 +698,15 @@ async function talk() {
   }}
 
 const destroyButton = document.getElementById('destroy-button');
+
+destroyButton.onclick = async () => {
+	//updateConversation("","I'm your Intelligent Insurance Assistant. How may I assist you?");
+	 
+
+	console.log("UUU");
+	destroy();
+}
+
 async function destroy() {
   await fetch(`${DID_API.url}/talks/streams/${streamId}`,
     {
@@ -823,4 +836,4 @@ async function main()
 
 
 console.log("UUU");
-//main();
+main();

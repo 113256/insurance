@@ -1,10 +1,10 @@
-TypeOfDocument: Critical Illness Claim form
-Diagnosis: Acute Lymphoblastic Leukemia
-Symptoms: Fatigue, frequent infections, unexplained weight loss, easy bruising, and bone pain
-AttendingPhysician: Dr. Sarah Thompson, MD
-HospitalizationRequired: Yes
-HospitalName: Mercy General Hospital
-IsPatientAbleToPerformJobDuties: No
-SurgeryRequired: Yes
-SummaryOfTheWholeFile: The claimant has been diagnosed with Acute Lymphoblastic Leukemia, exhibiting symptoms such as fatigue, frequent infections, unexplained weight loss, easy bruising, and bone pain. The attending physician is Dr. Sarah Thompson, MD. The claimant requires hospitalization at Mercy General Hospital and is unable to perform job duties. Surgery is also required.
-Recommendation: The claim should be approved. The policy purchased covers Critical Illnesses and surgery fees within 100k. The claimant's diagnosis of Acute Lymphoblastic Leukemia falls under the category of Critical Illnesses, and the required surgery is covered under the policy. The claimant's inability to perform job duties further substantiates the severity of the illness. Therefore, based on the policy coverage and the details provided, the claim is valid and should be approved.
+ClaimNumber: A12345
+Diagnosis: 急性淋巴白血病
+Symptoms: 近期出现疲劳、乏力、皮肤苍白、发热、容易出血和淋巴结肿大的症状
+AttendingPhysician: 王某某
+HospitalizationRequired: 是
+HospitalName: 上海第一人民医院
+IsPatientAbleToPerformJobDuties: 没有
+SurgeryRequired: 是
+SummaryOfTheWholeFile: 该案件涉及一位被诊断为急性淋巴白血病的患者。患者近期出现疲劳、乏力、皮肤苍白、发热、容易出血和淋巴结肿大的症状。主治医师为王某某，患者已被住院，并在上海第一人民医院接受治疗。患者目前无法工作，并需要进行手术。
+Recommendation: 根据保单条款，该保单覆盖10万美元以内的所有重大疾病和手术费用。患者的病情符合重大疾病的定义，且需要手术，因此，我建议批准此次理赔。
