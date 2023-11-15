@@ -218,6 +218,7 @@ async function uploadPolicyDoc() {
 }
 
 async function uploadPDF() {
+  var language = document.getElementById("currentLanguage").innerText;
 	console.log("SSS");
   const fileInput = document.getElementById('pdfs');
   const files = fileInput.files;
@@ -257,9 +258,9 @@ async function uploadPDF() {
 				//console.log(`Key: ${key}, Value: ${value}`);
 			  //}
 			}
-      if (document.getElementById("currentLanguage").innerText=="Chinese"){
+      if (language=="Chinese"){
           document.getElementById("TypeOfDocument").value = "重大疾病";
-      } elese {
+      } else {
         document.getElementById("TypeOfDocument").value = "Critical Illness";
       }
       
