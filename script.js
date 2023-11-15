@@ -257,7 +257,12 @@ async function uploadPDF() {
 				//console.log(`Key: ${key}, Value: ${value}`);
 			  //}
 			}
-      document.getElementById("TypeOfDocument").value = "重大疾病"
+      if (document.getElementById("currentLanguage").innerText=="Chinese"){
+          document.getElementById("TypeOfDocument").value = "重大疾病";
+      } elese {
+        document.getElementById("TypeOfDocument").value = "Critical Illness";
+      }
+      
 		}
 
       //alert(data.message); // Display the message from the response
