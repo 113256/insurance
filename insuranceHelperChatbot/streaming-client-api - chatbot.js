@@ -67,7 +67,7 @@ async function displayProductDetailsAndReason(name, details,reason) {
 
 //chatgpt
 function appendServiceChoiceToConversation() {
-  var hiddenElement = document.getElementById('serviceChoiceElement');
+  var hiddenElement = document.getElementById('serviceChoiceElement').cloneNode(true);;
   var conversationElement = document.getElementById('conversation');
 
   if (hiddenElement && conversationElement) {
@@ -76,7 +76,7 @@ function appendServiceChoiceToConversation() {
   }
 }
 function appendServiceChoiceEngToConversation() {
-  var hiddenElement = document.getElementById('serviceChoiceElementEng');
+  var hiddenElement = document.getElementById('serviceChoiceElementEng').cloneNode(true);;
   var conversationElement = document.getElementById('conversation');
 
   if (hiddenElement && conversationElement) {

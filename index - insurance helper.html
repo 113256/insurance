@@ -101,12 +101,12 @@
 		  // Import and use the exported function and variable
 			console.log("import!");
 			import { restart, showInsuranceOptions, getMoreInfo, recommendPackage } from './insuranceHelperChatbot/streaming-client-api - chatbot.js';
-			  document.getElementById('insure').addEventListener('click', function() {
+			  document.getElementsByName('insure')[document.getElementsByName('insure').length-1].addEventListener('click', function() {
 			  console.log("A");
       //showInsuranceOptions();
 	  getMoreInfo();
     });
-	document.getElementById('insureEng').addEventListener('click', function() {
+	document.getElementsByName('insureEng')[document.getElementsByName('insureEng').length-1].addEventListener('click', function() {
 			  console.log("A");
       //showInsuranceOptions();
 	  getMoreInfo();
@@ -161,7 +161,7 @@
 
 <div class="row" id="serviceChoiceElement" style="display: none; margin-bottom:10px;">
 	<div class = "col-md-3">
-		<a href="#" ><img id = "insure" style = "width:95px;height:95px" src = ".\insuranceHelperChatbot\insure.PNG" /></a>
+		<a href="#" ><img name = "insure" style = "width:95px;height:95px" src = ".\insuranceHelperChatbot\insure.PNG" /></a>
 	</div>
 	<div class = "col-md-3 greyImage">
 	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\claim.PNG" />
@@ -176,7 +176,7 @@
 
 <div class="row" id="serviceChoiceElementEng" style="display: none; margin-bottom:10px;">
 	<div class = "col-md-3">
-		<a href="#" ><img id = "insureEng" style = "width:95px;height:95px" src = ".\insuranceHelperChatbot\insure - Copy.PNG" /></a>
+		<a href="#" ><img name = "insureEng" style = "width:95px;height:95px" src = ".\insuranceHelperChatbot\insure - Copy.PNG" /></a>
 	</div>
 	<div class = "col-md-3 greyImage">
 	<img style = "width:95px;height:95px"  src = ".\insuranceHelperChatbot\claim - Copy.PNG" />
