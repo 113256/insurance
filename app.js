@@ -668,7 +668,7 @@ if(language=="Chinese"){
 } else {
   prompt = prompt.replace("{chineseModifier}", "");
 }
-	var result = await processPromptDataCustomToken  (prompt,false,100);
+	var result = await processPromptDataCustomToken  (prompt,false,300);
 	console.log(result);
 	return res.status(200).send(result);
 	

@@ -132,7 +132,7 @@ function appendTrainingToPageChinese(id, title, summary) {
 
     conversationElement.removeChild(conversationElement.firstChild);
   }
-	
+
   var hiddenElement =  document.getElementsByName('classChi')[0].cloneNode(true);
     hiddenElement.getElementsByClassName("name")[0].innerText = title;
   hiddenElement.getElementsByClassName("summary")[0].innerText = summary;
@@ -224,8 +224,32 @@ function reset(){
 		updateConversation("","Hello, I'm your training assistant, please select the learning topic below");
 		appendClassChoiceToConversation();
 	}
-	
-	
+
+
+  var conversationElement = document.getElementById('class1');
+  // Clear all child elements
+  while (conversationElement.firstChild) {
+
+    conversationElement.removeChild(conversationElement.firstChild);
+  }
+ conversationElement = document.getElementById('class2');
+  // Clear all child elements
+  while (conversationElement.firstChild) {
+
+    conversationElement.removeChild(conversationElement.firstChild);
+  }
+	 conversationElement = document.getElementById('class3');
+  // Clear all child elements
+  while (conversationElement.firstChild) {
+
+    conversationElement.removeChild(conversationElement.firstChild);
+  }
+	 conversationElement = document.getElementById('class4');
+  // Clear all child elements
+  while (conversationElement.firstChild) {
+
+    conversationElement.removeChild(conversationElement.firstChild);
+  }
 }
 
 function clearChatHistory(){
