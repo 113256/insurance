@@ -83,6 +83,15 @@ function appendServiceChoiceEngToConversation() {
     hiddenElement.style.display = ''; // Show the hidden element
     conversationElement.appendChild(hiddenElement);
   }
+
+
+
+	document.getElementsByName('insureEng')[document.getElementsByName('insureEng').length-1].addEventListener('click', function() {
+			  console.log("A");
+      //showInsuranceOptions();
+	  getMoreInfo();
+    });
+
 }
 //chatgpt
 function appendInsuranceChoiceToConversation() {
@@ -93,6 +102,13 @@ function appendInsuranceChoiceToConversation() {
     hiddenElement.style.display = ''; // Show the hidden element
     conversationElement.appendChild(hiddenElement);
   }
+
+			  document.getElementsByName('insure')[document.getElementsByName('insure').length-1].addEventListener('click', function() {
+			  console.log("A");
+      //showInsuranceOptions();
+	  getMoreInfo();
+    });
+  
 }
 
 function disableChat(){
@@ -739,7 +755,7 @@ async function destroy() {
   stopAllStreams();
   closePC();
 } catch (e){
-	
+
 }
 }
 

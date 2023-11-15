@@ -642,7 +642,12 @@ app.post('/loadPolicyDoc', upload.array('pdfs[]'), async (req, res) => {
 app.post('/answerQuestion', async (req, res) => {
 	var clientAnswer =req.query.clientAnswer;
 	
-	const productsPath = "insuranceHelperChatbot/PolicyDetailsSumary.txt";
+  var productsPath = "insuranceHelperChatbot/PolicyDetailsSumary.txt";
+  if (req.query.language == "Chinese"){
+       productsPath = "insuranceHelperChatbot/PolicyDetailsSumary.txt";
+  }else{
+     productsPath = "insuranceHelperChatbot/PolicyDetailsSumary-English.txt";
+  }
 	const products = await fs.promises.readFile(productsPath, 'utf8');
 	
 	var prompt = "You are an professional insurance officer. Answer the following question in a professional and thorough manner and you must limit your knowledge to the below knowledge base.: "+clientAnswer+",\n  {chineseModifier}. Knowledge Base: Insurance product list: "+products;
