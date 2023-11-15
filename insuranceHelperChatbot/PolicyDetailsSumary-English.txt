@@ -22,9 +22,9 @@ Flexifortune
 - Includes an accidental death benefit in the first 5 policy years."
 }
 
-Manulife first VHIS flexi plan
+First VHIS flexi plan
 {
-  "Summary": "Manulife First VHIS Flexi Plan is an indemnity hospital insurance plan certified by the Health Bureau of Hong Kong. It provides coverage for hospitalization and surgical expenses.",
+  "Summary": "First VHIS Flexi Plan is an indemnity hospital insurance plan certified by the Health Bureau of Hong Kong. It provides coverage for hospitalization and surgical expenses.",
   "Cost": "Premiums vary by age and plan choice. Tax deductions up to HK$8,000 per insured person apply.", 
   "InsuredAge": "15 days to 80 years old",
   "GuaranteePeriod": "Guaranteed annual renewal",
@@ -63,14 +63,14 @@ Other perks:
 
 - Premium discount for no claims record
 
-- ManulifeMOVE premium discount"
+- MOVE premium discount"
 }
 
 
 
-Manulife Supreme Lite VHIS Supplementary Benefit 
+Supreme Lite VHIS Supplementary Benefit 
 {
-  "Summary": "Manulife Supreme Lite VHIS Supplementary Benefit provides extra coverage for hospitalization on top of a designated basic plan. It offers full coverage for major medical expenses like hospitalization, surgery, and cancer treatment, up to the annual limit of HK$5M or HK$12M per policy year depending on plan level.",
+  "Summary": "Supreme Lite VHIS Supplementary Benefit provides extra coverage for hospitalization on top of a designated basic plan. It offers full coverage for major medical expenses like hospitalization, surgery, and cancer treatment, up to the annual limit of HK$5M or HK$12M per policy year depending on plan level.",
   
   "Cost": "Premiums vary depending on the age of the insured person and are payable annually. Please refer to the standard premium schedule.",
   
@@ -85,9 +85,9 @@ Manulife Supreme Lite VHIS Supplementary Benefit
 
 
 
-manupremier-protector-Life
+premier-protector-Life
 {
-  "Summary": "ManuPremier Protector is a whole life participating insurance plan that provides lifelong protection along with long-term savings opportunities.",
+  "Summary": "Premier Protector is a whole life participating insurance plan that provides lifelong protection along with long-term savings opportunities.",
   "Cost": "Minimum annual premium is US$4,233 for a notional amount of US$250,000 based on a 35 year old non-smoker in Hong Kong.", 
   "InsuredAge": "Issue age is 15 days to 75 years old (Hong Kong) or 70 years old (Macau)",
   "GuaranteePeriod": "Guaranteed for lifetime",

@@ -674,6 +674,26 @@ if(language=="Chinese"){
 	
   });
 
+
+
+ app.post('/generateQuiz', async (req, res) => {
+  var topics =req.query.topics;
+  var language = req.query.language;
+  var prompt = `For the following topics: ${topics}, create an MCQ quiz. There should be 10 questions in total, with 4 options per question. Give the answer in the following JSON format:
+[{"Question":"","Option1":"","Option2":"","Option3":"","Option4":"","Answer":""},{"Question":"","Option1":"","Option2":"","Option3":"","Option4":"","Answer":""}] . {chineseModifier}`
+;
+if(language=="Chinese"){
+  prompt = prompt.replace("{chineseModifier}", "The question and options must be in Chinese.");
+} else {
+  prompt = prompt.replace("{chineseModifier}", "");
+}
+  var result = await processPromptDataCustomToken  (prompt,false,2000);
+  console.log(result);
+  return res.status(200).send(result);
+  
+  });
+
+
 app.post('/recommendTraining', async (req, res) => {
 	var clientAnswer =req.query.clientAnswer;
 	var trainType = req.query.trainType;
