@@ -320,6 +320,16 @@ uploadButton.onclick = async () => {
 	uploadImg();
 }
 
+
+export async function restart(){
+		var hiddenElement = document.getElementById('speechBubble');
+    hiddenElement.style.display = 'None'; // Show the hidden element
+		clearChatHistory();
+	await destroy();
+
+	await connect();
+}
+
 export async function showInsuranceOptions(){
 	 await talkCustom("Choose an insurance category from the suggested list below or type in your own.");
 		updateConversation("","Choose an insurance category from the suggested list below or type in your own.");
@@ -416,6 +426,16 @@ async function connect(){
 	
 	
 	
+}
+
+
+function clearChatHistory(){
+  const conversationElement = document.getElementById('conversation');
+  // Clear all child elements
+  while (conversationElement.firstChild) {
+
+    conversationElement.removeChild(conversationElement.firstChild);
+  }
 }
 
 //const talkButton = document.getElementById('talk-button');
