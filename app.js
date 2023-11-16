@@ -372,26 +372,26 @@ while (!success && retryCount < maxRetries) {
   
   
   var data;
-  /*
+  
       const headers = {
       "Content-Type": "application/json",
-      "Authorization": "Bearer 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"
+      "Authorization": "Bearer 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"
     };
   if (jsonFormat){
        data = JSON.stringify({
       messages: [{"role": "user", "content": prompt}],
-      model: "gpt-3.5-turbo-16k",
+      model: "gpt-3.5-turbo-1106",
       response_format:{"type": "json_object"},
-      temperature: 0.5,
-      max_tokens: 4000
+      temperature: 0,
+      max_tokens: max_tokens
     });
     
   }else{
         data = JSON.stringify({
         messages: [{"role": "user", "content": prompt}],
-        model: "gpt-3.5-turbo-16k",
-        temperature: 0.5,
-        max_tokens: 4000
+        model: "gpt-3.5-turbo-1106",
+        temperature: 0,
+        max_tokens: max_tokens
       });
     
   }
@@ -402,7 +402,9 @@ while (!success && retryCount < maxRetries) {
     });
   console.log(response);
     const responseData = await response.json();
-  */
+  
+
+/*
        const headers = {
       "Content-Type": "application/json",
       "api-key": "dc9c7f26d3b047a58ce8bfedd2db8eab"
@@ -422,14 +424,18 @@ while (!success && retryCount < maxRetries) {
       max_tokens:max_tokens
   });
   }
+
+
   const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/GPT-4-8k/chat/completions?api-version=2023-07-01-preview", {
      method: "POST",
      headers: headers,
      body: data
     });
+
+
   console.log(response);
     const responseData = await response.json();
-  
+ */ 
     
   //https://api.openai.com/v1/chat/completions
   
@@ -488,25 +494,25 @@ while (!success && retryCount < maxRetries) {
 	
 	
 	var data;
-	/*
+	
 	    const headers = {
       "Content-Type": "application/json",
-      "Authorization": "Bearer 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"
+      "Authorization": "Bearer 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"
     };
 	if (jsonFormat){
 		   data = JSON.stringify({
 		  messages: [{"role": "user", "content": prompt}],
-		  model: "gpt-3.5-turbo-16k",
+		  model: "gpt-3.5-turbo-1106",
 		  response_format:{"type": "json_object"},
-		  temperature: 0.5,
+		  temperature: 0,
 		  max_tokens: 4000
     });
 		
 	}else{
 		    data = JSON.stringify({
 			  messages: [{"role": "user", "content": prompt}],
-			  model: "gpt-3.5-turbo-16k",
-			  temperature: 0.5,
+			  model: "gpt-3.5-turbo-1106",
+			  temperature: 0,
 			  max_tokens: 4000
 			});
 		
@@ -518,7 +524,7 @@ while (!success && retryCount < maxRetries) {
     });
 	console.log(response);
     const responseData = await response.json();
-	*/
+	/*
 		   const headers = {
       "Content-Type": "application/json",
       "api-key": "dc9c7f26d3b047a58ce8bfedd2db8eab"
@@ -545,7 +551,7 @@ while (!success && retryCount < maxRetries) {
     });
 	console.log(response);
     const responseData = await response.json();
-	
+	*/
 		
 	//https://api.openai.com/v1/chat/completions
 	

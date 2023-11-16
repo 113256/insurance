@@ -104,6 +104,9 @@
 	margin-right:10px;
 	font-size: 13px;
 }
+ .btn-secondary.active.checked {
+      background-color: blue; /* Color when checked */
+    }
     </style>
 	
 	<script type="module">
@@ -196,8 +199,8 @@
 	    <nav class="topbar navbar navbar-expand-md navbar-light mb-4 barHeading" style="background:rgb(38, 65, 148)" >
 	<a style="color:white" href="#" class="navbar-brand"><b><span lang="en">Agent Self-Training</span><span lang="cn">代理人培训</span></b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
 			        <span style="display:None" id = "currentLanguage">English</span>
-        <button type="button" onclick="eng();reset();" style="color:white" class="btn btn-link">ENG</button>
-        <button type="button" onclick="cn();reset();" style="color:white" class="btn btn-link">中文</button>
+        <button type="button" onclick="eng();" style="color:white" class="btn btn-link">ENG</button>
+        <button type="button" onclick="cn();" style="color:white" class="btn btn-link">中文</button>
     </nav>
 	
     <div class="container-fluid" style = "padding-left:0;padding-right:0;height:660px">
@@ -259,26 +262,26 @@
 								<div style = "background-color: gray; padding:15px">
 									<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 									  <div class="btn-group mr-2 mb-2" role="group" aria-label="First group">
-									  	<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Communication Skills</input>
+									  	<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None" type="checkbox"  autocomplete="off" class=""><span lang="en">Communication Skills</span><span lang="cn">沟通技巧</span></input>
 										</label>
-									   <label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Product Knowledge</input>
+									   <label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Product Knowledge</span><span lang="cn">产品知识</span></input>
 										</label>
-										<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Sales and Negotiation Skills</input>
+										<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Sales and Negotiation Skills</span><span lang="cn">销售与谈判技巧</span></input>
 										</label>
-										<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Relationship Building</input>
+										<label class="btn btn-secondary active assessmentBtn">
+									    <input  style="display:None" type="checkbox"  autocomplete="off" class=""><span lang="en">Relationship Building</span><span lang="cn">建立关系</span></input>
 										</label>
 
 									  </div>
 									   <div class="btn-group mr-2 mt-2" role="group" aria-label="First group">
-										<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Problem Solving Abilities</input>
+										<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Problem Solving Abilities</span><span lang="cn">解决问题能力</span></input>
 										</label>
-										<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Ethical Conduct</input>
+										<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Ethical Conduct</span><span lang="cn">道德行为</span></input>
 										</label>																	   	
 
 									  </div>
@@ -287,26 +290,26 @@
 
 									<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 									  <div class="btn-group mr-2 mb-2" role="group" aria-label="First group">
-									  	<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Life Insurance</input>
+									  	<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Life Insurance</span><span lang="cn">人寿保险</span></input>
 										</label>
-										<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Health Insurance</input>
+										<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Health Insurance</span><span lang="cn">健康保险</span></input>
 										</label>
-										<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Auto Insurance</input>
+										<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Auto Insurance</span><span lang="cn">汽车保险</span></input>
 										</label>
-										<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Homeowner's Insurance</input>
+										<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Homeowner's Insurance</span><span lang="cn">房主保险</span></input>
 										</label>
 
 									  </div>
 									   <div class="btn-group mr-2 mt-2" role="group" aria-label="First group">
-									   	<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Commercial Insurance</input>
+									   	<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Commercial Insurance</span><span lang="cn">商业保险</span></input>
 										</label>
-										<label class="btn btn-primary active assessmentBtn">
-									    <input type="checkbox"  autocomplete="off" class="">Travel Insurance</input>
+										<label class="btn btn-secondary active assessmentBtn">
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Travel Insurance</span><span lang="cn">旅行保险</span></input>
 										</label>
 									  </div>
 
@@ -321,8 +324,13 @@
 							<div class="position-relative">
 								<!-- Your content here -->
 								<div id = "" style = "background-color: #f0eaea; padding:30px;margin-top:15px; height:320px">
-									<div id = "finish" style="display:None"><h1>You have completed the quiz! thank you.</h1></div>
+
+
+
+									<div id = "finish" style="display:None"><h1><span lang="en">You have completed the assessment. Thank you.</span><span lang="cn">你已完成评估！谢谢你</span></h1></div>
 									<div id = "quiz" style = "display:None">
+												<div class = "row">
+													<div class = "col-md-7">
 									<h2 id = "question">Question</h2><br>
 
 									<div class="form-check">
@@ -349,8 +357,15 @@
 									    Question 4
 									  </label>
 									</div><br>									
-									<button type="button" id = "next" onclick="nextQuestion()" class="btn btn-success">Next</button>							<button id="submit" style="display:None" type="button" onclick="submitAnswers()" class="btn btn-primary">Submit</button>					
+									
 								</div>
+								<div class = "col-md-3">
+									<button type="button" id = "next" onclick="nextQuestion()" class="btn btn-success">Next</button>							<button id="submit" style="display:None" type="button" onclick="submitAnswers()" class="btn btn-primary">Submit</button>					
+
+								</div>
+							</div>
+										</div>
+
 								</div>
 
 								<div id="quizSpinner" class="sk-circle-fade" style="display: none;position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 6rem; height: 6rem;">
@@ -371,6 +386,7 @@
 							
 						<!--<div class="spinner-border position-absolute top-50 start-50 " id="askSpinner" style="display: none;left:40%!important;top:30%!important;width: 6rem; height: 6rem;"></div>-->
 						</div>
+						<div class = "col-md-3"></div>
 
 							</div>
 
@@ -393,6 +409,15 @@
 		
 			<script type="text/javascript" src=".\AgentSelfTrain\script-assessment.js"></script>
 			<script src="language.js"></script>
+			<script>
+  // Add an event listener to all checkboxes with the class "checkbox"
+  document.querySelectorAll('[type="checkbox"]').forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      // Toggle the 'checked' class on the parent label based on the checkbox state
+      this.closest('.btn-secondary	').classList.toggle('checked', this.checked);
+    });
+  });
+</script>
 
 </body>
 

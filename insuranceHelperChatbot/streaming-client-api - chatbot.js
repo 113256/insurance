@@ -74,6 +74,12 @@ function appendServiceChoiceToConversation() {
     hiddenElement.style.display = ''; // Show the hidden element
     conversationElement.appendChild(hiddenElement);
   }
+
+    document.getElementsByName('insure')[document.getElementsByName('insure').length-1].addEventListener('click', function() {
+			  console.log("A");
+      //showInsuranceOptions();
+	  getMoreInfo();
+    });
 }
 function appendServiceChoiceEngToConversation() {
   var hiddenElement = document.getElementById('serviceChoiceElementEng').cloneNode(true);;
@@ -103,12 +109,8 @@ function appendInsuranceChoiceToConversation() {
     conversationElement.appendChild(hiddenElement);
   }
 
-			  document.getElementsByName('insure')[document.getElementsByName('insure').length-1].addEventListener('click', function() {
-			  console.log("A");
-      //showInsuranceOptions();
-	  getMoreInfo();
-    });
-  
+			
+
 }
 
 function disableChat(){
