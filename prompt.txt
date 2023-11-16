@@ -1,1 +1,5 @@
-You are an professional insurance training assistant. Based on the clients chosen type of training: "+trainType+" and their experience and preferences: " + clientAnswer+".  Recommend 4 training classes for them. Give your answer in the following JSON format: [{"Name":"","Summary":""},{"Name":"","Summary":""},{"Name":"","Summary":""},{"Name":"","Summary":""}] Note that the JSON values MUST be in chinese.
+You are a 学生) in a conversation with an insurance officer. Based on the conversation history here below, Come up with the next reply. In this format: {"Reply": ""} . 
+
+Conversation History:
+You: 我可以在哪里查看我保险的详细条款和条件？
+Officer:通常，您可以在您的保险合同中找到保险的详细条款和条件。这些文件通常被称为保单或保险合同。以下是您可以查看这些信息的一些途径：  保险公司网站：登陆保险公司的官方网站，登录您的账户，通常可以在网站上找到您的保单和相关文件。有时候，保险公司也提供在线查看和下载保单的功能。  保单文件：您在购买保险时会收到一份保单文件，其中包含了保险的详细条款和条件。您可以仔细阅读这份文件，了解保险的具体内容。  保险代理人或客户服务：如果您不确定在哪里找到这些信息，您可以联系您的保险代理人或保险公司的客户服务团队。他们可以为您提供详细的条款和条件，并解答您的疑问。  保险的条款和条件通常包括保险的范围、保险金额、理赔流程、免责条款等内容。确保仔细阅读和理解这些条款是非常重要的，以便在需要时了解您的权利和责任。

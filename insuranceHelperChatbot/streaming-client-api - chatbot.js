@@ -67,6 +67,7 @@ async function displayProductDetailsAndReason(name, details,reason) {
 
 //chatgpt
 function appendServiceChoiceToConversation() {
+	try{
   var hiddenElement = document.getElementById('serviceChoiceElement').cloneNode(true);;
   var conversationElement = document.getElementById('conversation');
 
@@ -80,6 +81,7 @@ function appendServiceChoiceToConversation() {
       //showInsuranceOptions();
 	  getMoreInfo();
     });
+} catch (e){}
 }
 function appendServiceChoiceEngToConversation() {
   var hiddenElement = document.getElementById('serviceChoiceElementEng').cloneNode(true);;
@@ -431,6 +433,7 @@ async function connect(){
 	
 	uploadButton.style.display = 'None';
 	console.log("LLL = "+language);
+	clearChatHistory();
 	if (language == "Chinese"){
 		await talkCustom("我是您的智能保险助手。我可以如何协助您？");
 		updateConversation("","我是您的智能保险助手。我可以如何协助您？");
