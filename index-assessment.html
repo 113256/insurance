@@ -13,7 +13,8 @@
 	<link href="css/styleSpeechBubble.css" rel="stylesheet">
 	
 	<link href="css/sidebars.css" rel="stylesheet">
-
+<script src="./js/anychart-core.min.js"></script>
+<script src="./js/anychart-radar.min.js"></script>
 	<style>
 		.darkButton{
 			background:rgb(38, 65, 148);
@@ -107,6 +108,13 @@
  .btn-secondary.active.checked {
       background-color: blue; /* Color when checked */
     }
+
+    html, body, #container { 
+        width: 100%; 
+        height: 100%; 
+        margin: 0; 
+        padding: 0; 
+      } 
     </style>
 	
 	<script type="module">
@@ -135,6 +143,7 @@
 </head>
 
 <body>
+	<div id="container"></div>
 							<div  style="display:None;" name = "class">
 							<img style = "width:100%" src = "insuranceHelperChatbot/agentTraining.png" />	
 							<div style="font-size:11px; border:1px solid #dedede; padding-left:20px;padding-top:20px">
@@ -401,6 +410,42 @@
             </div>
 			
 		</div>
+		<script>
+
+      anychart.onDocumentReady(function () {
+
+        // create a data set
+        var chartData = {
+        header: ['#', 'Robert Lewandowski', 'Cristiano Ronaldo', 'Lionel Messi'],
+          rows: [
+            ['2017', 33, 19, 40],
+            ['2018', 24, 36, 34],
+            ['2019', 31, 17, 34],
+            ['2020', 32, 33, 19],
+            ['2021', 43, 25, 24],
+            ['2022', 29, 11, 12]
+          ]
+        };
+
+        // create a radar chart
+        var chart = anychart.radar();
+
+        // set the chart data
+        chart.data(chartData);
+  
+        // set the chart title
+        chart.title("Total Goals for Clubs");
+ 
+        // set the container id
+        chart.container('container');
+  
+        // display the radar chart
+        chart.draw();
+
+      });
+
+    </script>
+
 	      <script src="./js/sidebars.js"></script>
     <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
 	   <script type="text/javascript" src="./js/bootstrap.esm.min.js"></script>
