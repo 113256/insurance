@@ -372,7 +372,7 @@ while (!success && retryCount < maxRetries) {
   
   
   var data;
-  
+  /*
       const headers = {
       "Content-Type": "application/json",
       "Authorization": "Bearer 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"
@@ -402,7 +402,7 @@ while (!success && retryCount < maxRetries) {
     });
   console.log(response);
     const responseData = await response.json();
-  
+  */
 
 /*
        const headers = {
@@ -436,7 +436,39 @@ while (!success && retryCount < maxRetries) {
   console.log(response);
     const responseData = await response.json();
  */ 
+    const headers = {
+      "Content-Type": "application/json",
+      "api-key": "dc9c7f26d3b047a58ce8bfedd2db8eab"
+    };
+  if (jsonFormat){
+       data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      response_format:{"type": "json_object"},
+      temperature: 0,
+      max_tokens: 4000
+    });
     
+  }else{
+    data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      temperature: 0,
+      max_tokens:4000
+  });
+  }
+  const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/gpt-3-turbo/chat/completions?api-version=2023-07-01-preview", {
+     method: "POST",
+     headers: headers,
+     body: data
+    });
+  console.log(response);
+    const responseData = await response.json();
+  //https://api.openai.com/v1/chat/completions
+  
+  
+  
+    console.log("RES:"+responseData.toString());
+
+    var responseContent = responseData.choices[0].message.content;
   //https://api.openai.com/v1/chat/completions
   
   
@@ -494,7 +526,7 @@ while (!success && retryCount < maxRetries) {
 	
 	
 	var data;
-	
+	/*
 	    const headers = {
       "Content-Type": "application/json",
       "Authorization": "Bearer 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"
@@ -524,6 +556,7 @@ while (!success && retryCount < maxRetries) {
     });
 	console.log(response);
     const responseData = await response.json();
+    */
 	/*
 		   const headers = {
       "Content-Type": "application/json",
@@ -552,7 +585,32 @@ while (!success && retryCount < maxRetries) {
 	console.log(response);
     const responseData = await response.json();
 	*/
-		
+		 const headers = {
+      "Content-Type": "application/json",
+      "api-key": "dc9c7f26d3b047a58ce8bfedd2db8eab"
+    };
+  if (jsonFormat){
+       data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      response_format:{"type": "json_object"},
+      temperature: 0,
+      max_tokens: 4000
+    });
+    
+  }else{
+    data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      temperature: 0,
+      max_tokens:4000
+  });
+  }
+  const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/gpt-3-turbo/chat/completions?api-version=2023-07-01-preview", {
+     method: "POST",
+     headers: headers,
+     body: data
+    });
+  console.log(response);
+    const responseData = await response.json();
 	//https://api.openai.com/v1/chat/completions
 	
 	
