@@ -349,8 +349,9 @@ function extractJSONString(response) {
 
 
 async function processPromptDataCustomToken(prompt, jsonFormat, max_tokens) {
+   fs.writeFileSync('prompt.txt', prompt);
   console.log("Process prompt Data " +prompt);  
-  const scriptPath = "extractDetailsPrompt.txt";
+
  
   const maxRetries = 10; // You can adjust the number of retries as needed
   let retryCount = 0;
@@ -445,14 +446,14 @@ while (!success && retryCount < maxRetries) {
       messages: [{"role": "user", "content": prompt}],
       response_format:{"type": "json_object"},
       temperature: 0,
-      max_tokens: 4000
+      max_tokens: max_tokens
     });
     
   }else{
     data = JSON.stringify({
       messages: [{"role": "user", "content": prompt}],
       temperature: 0,
-      max_tokens:4000
+      max_tokens:max_tokens
   });
   }
   const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/gpt-3-turbo/chat/completions?api-version=2023-07-01-preview", {
@@ -460,8 +461,12 @@ while (!success && retryCount < maxRetries) {
      headers: headers,
      body: data
     });
-  console.log(response);
-    const responseData = await response.json();
+  //console.log(response);
+  const responseTxt = await response.text(); // to print errors etc...
+  console.log(responseTxt);
+    //const responseData = await response.json();
+        const responseData =  JSON.parse(responseTxt);
+        console.log(responseData);
   //https://api.openai.com/v1/chat/completions
   
   
@@ -743,7 +748,28 @@ if(language=="Chinese"){
 	
   });
 
+//upload.array() = THIS IS TO ALLOW REQ.BODY!!!
+app.post('/performanceAnalysis', upload.array(), async(req,res)=>{
+  
+  var skills = req.query.skills;
+  var candidateAnswer = req.body.candidateAnswers;
+  console.log(candidateAnswer);
+  //var language = req.query.language;
+  console.log("reading...");
+  var markScheme = fs.readFileSync("quiz.txt", 'utf8');
+  markScheme = markScheme.replace(/\n/g, ' ');
 
+  var prompt = `This is a quiz on the following skills: ${skills}. Based on the candidate answers, give a rating of each skill out of 5.Quiz questions and correct answers: ${markScheme}. Candidate answers:${candidateAnswer} .Give answer in this format: {"SkillName":"Rating","SkillName":"Rating"}`
+;
+
+
+  //var prompt = fs.readFileSync("prompt.txt", 'utf8');
+
+console.log(prompt);
+  var result = await processPromptDataCustomToken(prompt,false,1500);
+console.log(result);
+  return res.status(200).send(result);
+})
 
  app.post('/generateQuiz', async (req, res) => {
   var topics =req.query.topics;
@@ -757,6 +783,9 @@ if(language=="Chinese"){
   prompt = prompt.replace("{chineseModifier}", "");
 }
   var result = await processPromptDataCustomToken  (prompt,false,2000);
+
+      fs.writeFileSync('quiz.txt', result);
+
   console.log(result);
   return res.status(200).send(result);
   
@@ -1038,6 +1067,7 @@ app.post('/upload', upload.array('pdfs[]'), async (req, res) => {
 //  console.log(`Server is running on http://localhost:${port}`);
 //});
 app.use('/', express.static(__dirname));
+app.use(express.json())    // <==== parse request body as JSON 
 const server = http.createServer(app);
 console.log(port);
 server.listen(port, () => console.log('Server started on port localhost:3000'));

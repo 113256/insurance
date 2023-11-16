@@ -109,7 +109,13 @@
       background-color: blue; /* Color when checked */
     }
 
-    html, body, #container { 
+    #chart1{ 
+        width: 100%; 
+        height: 100%; 
+        margin: 0; 
+        padding: 0; 
+      } 
+       #chart2{ 
         width: 100%; 
         height: 100%; 
         margin: 0; 
@@ -143,45 +149,25 @@
 </head>
 
 <body>
-	<div id="container"></div>
-							<div  style="display:None;" name = "class">
-							<img style = "width:100%" src = "insuranceHelperChatbot/agentTraining.png" />	
-							<div style="font-size:11px; border:1px solid #dedede; padding-left:20px;padding-top:20px">
-								<div style="text-align:center">
-								<p class="name" style="font-size:20px;font-weight:700; text-align:center">Test</p>
-								<p><span class="badge bg-secondary">Not Started</span> <span lang="en">Updated Date: 11/11/2023</span><span lang="cn">日期: 11/11/2023</span></p>
-								</div>
-								<p style = "margin-left:20px" class="summary">test summary</p>
-								<div style = "margin-left:200px">
-								
-								</div>
-							</div>
-						</div>
-
-<div class="row" id="trainingChoice" style="display: None; margin-bottom:10px;">
-	<div class = "col-md-4">
-		<a href = "#" onclick = askExperience("product") ><img id = "insure" style = "width:95px;height:85px" src = ".\AgentSelfTrain\product.PNG" /></a>
-	</div>
-	<div class = "col-md-4">
-		<a href = "#"  onclick = askExperience("communication")  ><img style = "width:95px;height:85px"  src = ".\AgentSelfTrain\comm.PNG" /></a>
-	</div>
-	<div class = "col-md-4">
-		<a  href = "#"  onclick = askExperience("sales") ><img style = "width:95px;height:85px"  src = ".\AgentSelfTrain\sales.PNG" /></a>
-	</div>
-
-</div>
-
-<div class="row" id="trainingChoiceChinese" style="display: None; margin-bottom:10px;">
-	<div class = "col-md-4">
-		<a href = "#" onclick = askExperience("产品") ><img id = "insure" style = "width:95px;height:85px" src = ".\AgentSelfTrain\product - Copy.PNG" /></a>
-	</div>
-	<div class = "col-md-4">
-		<a href = "#"  onclick = askExperience("沟通")  ><img style = "width:95px;height:85px"  src = ".\AgentSelfTrain\comm - Copy.PNG" /></a>
-	</div>
-	<div class = "col-md-4">
-		<a  href = "#"  onclick = askExperience("销售") ><img style = "width:95px;height:85px"  src = ".\AgentSelfTrain\sales - Copy.PNG" /></a>
-	</div>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span lang="en">Please select at least 3 Performance Skills and 3 Product Knowledge Skills</span>
+        <span lang="cn">请至少选择 3 项绩效技能和 3 项产品知识技能。</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  
+      </div>
+    </div>
+  </div>
 </div>
 
 		
@@ -208,13 +194,13 @@
 	    <nav class="topbar navbar navbar-expand-md navbar-light mb-4 barHeading" style="background:rgb(38, 65, 148)" >
 	<a style="color:white" href="#" class="navbar-brand"><b><span lang="en">Agent Self-Training</span><span lang="cn">代理人培训</span></b></a><button id="button5" aria-label="Toggle navigation" aria-expanded="false" aria-controls="bs-navbar-collapse-1" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
 			        <span style="display:None" id = "currentLanguage">English</span>
-        <button type="button" onclick="eng();" style="color:white" class="btn btn-link">ENG</button>
-        <button type="button" onclick="cn();" style="color:white" class="btn btn-link">中文</button>
+        <button type="button" onclick="eng();reset();" style="color:white" class="btn btn-link">ENG</button>
+        <button type="button" onclick="cn();reset();" style="color:white" class="btn btn-link">中文</button>
     </nav>
 	
     <div class="container-fluid" style = "padding-left:0;padding-right:0;height:660px">
 		
-        <div class="row">
+        <div class="row" >
 			<div class = "col-md-2">
 					  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px;height:100%">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
@@ -244,7 +230,7 @@
       <li>
         <a href="#" class="nav-link active">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-          <span lang="en">Assessment</span><span lang="cn">评估</span> 
+          <span lang="en">Assessment</span><span lang="cn">在线测试</span> 
         </a>
       </li>
       <li>
@@ -261,13 +247,13 @@
             <div class="col-md-10">
 			
 				<div style = "padding-left:20px">
-						<div class = "row">
+						<div class = "row" style="padding-right:30px !important; margin-right:0 !important">
 							<div class = "col-md-3">
 								
 									<a href="#" onclick="generateQuiz()"><img style = "width:300px;height:250px" src="AgentSelfTrain/generateAssessment.png"></a>
 							
 							</div>
-							<div class = "col-md-8">
+							<div class = "col-md-9">
 								<div style = "background-color: gray; padding:15px">
 									<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 									  <div class="btn-group mr-2 mb-2" role="group" aria-label="First group">
@@ -281,7 +267,7 @@
 									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Sales and Negotiation Skills</span><span lang="cn">销售与谈判技巧</span></input>
 										</label>
 										<label class="btn btn-secondary active assessmentBtn">
-									    <input  style="display:None" type="checkbox"  autocomplete="off" class=""><span lang="en">Relationship Building</span><span lang="cn">建立关系</span></input>
+									    <input  style="display:None" type="checkbox"  autocomplete="off" class=""><span lang="en">Relationship Building</span><span lang="cn">客户关系维护</span></input>
 										</label>
 
 									  </div>
@@ -309,13 +295,13 @@
 									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Auto Insurance</span><span lang="cn">汽车保险</span></input>
 										</label>
 										<label class="btn btn-secondary active assessmentBtn">
-									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Homeowner's Insurance</span><span lang="cn">房主保险</span></input>
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Homeowner's Insurance</span><span lang="cn">火灭保险</span></input>
 										</label>
 
 									  </div>
 									   <div class="btn-group mr-2 mt-2" role="group" aria-label="First group">
 									   	<label class="btn btn-secondary active assessmentBtn">
-									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Commercial Insurance</span><span lang="cn">商业保险</span></input>
+									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Commercial Insurance</span><span lang="cn">建工保险</span></input>
 										</label>
 										<label class="btn btn-secondary active assessmentBtn">
 									    <input style="display:None"  type="checkbox"  autocomplete="off" class=""><span lang="en">Travel Insurance</span><span lang="cn">旅行保险</span></input>
@@ -328,15 +314,33 @@
 							</div>
 						</div>
 					
-						<div class = "row">
-							<div class = "col-md-11">
+						<div class = "row" style="padding-right:30px !important; margin-right:0 !important">
+							<div class = "col-md-12">
 							<div class="position-relative">
 								<!-- Your content here -->
-								<div id = "" style = "background-color: #f0eaea; padding:30px;margin-top:15px; height:320px">
+								<div id = "" style = "background-color: #f0eaea; padding:30px;margin-top:15px; height:370px">
 
 
+									<div id = "charts" style="display:None;height:100%">
+										<div class = "row" style="height:100%">
+											<div class = "col-md-6">
+												<div id="chart1"></div>	
+											</div>
+											<div class = "col-md-6">
+												<div id="chart2"></div>	
+											</div>
+										</div>
+														
 
-									<div id = "finish" style="display:None"><h1><span lang="en">You have completed the assessment. Thank you.</span><span lang="cn">你已完成评估！谢谢你</span></h1></div>
+									</div>
+
+
+									<div id = "finish" style="display:None"><h1><span lang="en">You have completed the assessment. Thank you.</span><span lang="cn">你已完成评估！谢谢你</span></h1>
+													<button id="performanceAnalysis" style="display:" type="button" onclick="performanceAnalysis()" class="btn btn-primary"><span lang="en">Performance Analysis</span><span lang="cn">绩效分析</span></button>	
+
+											<div id="chart"></div>				
+
+									</div>
 									<div id = "quiz" style = "display:None">
 												<div class = "row">
 													<div class = "col-md-7">
@@ -369,7 +373,9 @@
 									
 								</div>
 								<div class = "col-md-3">
-									<button type="button" id = "next" onclick="nextQuestion()" class="btn btn-success">Next</button>							<button id="submit" style="display:None" type="button" onclick="submitAnswers()" class="btn btn-primary">Submit</button>					
+									<button style="bottom:0;position:absolute;margin-bottom:30px" type="button" id = "next" onclick="nextQuestion()" class="btn btn-success"><span lang="en">Next</span><span lang="cn">下一题</span></button>
+									<button id="submit" style="display:None" type="button" onclick="submitAnswers()" class="btn btn-primary"><span lang="en">Submit</span><span lang="cn">提交</span></button>	
+
 
 								</div>
 							</div>
@@ -411,19 +417,19 @@
 			
 		</div>
 		<script>
-
+/*
       anychart.onDocumentReady(function () {
 
         // create a data set
         var chartData = {
-        header: ['#', 'Robert Lewandowski', 'Cristiano Ronaldo', 'Lionel Messi'],
+        header: ['Robert Lewandowski'],
           rows: [
-            ['2017', 33, 19, 40],
-            ['2018', 24, 36, 34],
-            ['2019', 31, 17, 34],
-            ['2020', 32, 33, 19],
-            ['2021', 43, 25, 24],
-            ['2022', 29, 11, 12]
+            ['2017', 33],
+            ['2018', 24],
+            ['2019', 31],
+            ['2020', 32],
+            ['2021', 43],
+            ['2022', 29]
           ]
         };
 
@@ -443,7 +449,7 @@
         chart.draw();
 
       });
-
+*/
     </script>
 
 	      <script src="./js/sidebars.js"></script>
