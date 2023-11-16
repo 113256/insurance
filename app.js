@@ -860,7 +860,7 @@ console.log(result);
  app.post('/generateQuiz', async (req, res) => {
   var topics =req.query.topics;
   var language = req.query.language;
-  var prompt = `For the following topics: ${topics}, create an MCQ quiz. There should be 10 questions in total, with 4 options per question. Give the answer in the following JSON format:
+  var prompt = `For the following topics: ${topics}, create an MCQ quiz, the questions must be advanced level or above as we are testing professionals and not beginners. There should be 10 questions in total, with 4 options per question. Give the answer in the following JSON format:
 [{"Question":"","Option1":"","Option2":"","Option3":"","Option4":"","Answer":""},{"Question":"","Option1":"","Option2":"","Option3":"","Option4":"","Answer":""}] . {chineseModifier}`
 ;
 if(language=="Chinese"){
