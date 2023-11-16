@@ -103,12 +103,21 @@
 	<script type="module">
 		  // Import and use the exported function and variable
 			console.log("import!");
-			import { askInsuranceQuestion} from './insuranceHelperChatbot/streaming-client-api - chatbot.js';
+			import { restart,askInsuranceQuestion} from './insuranceHelperChatbot/streaming-client-api - chatbot.js';
 			  
 	
 		document.getElementById('send').addEventListener('click', function() {
 			  console.log("R");
       askInsuranceQuestion();
+    });
+
+		    	document.getElementById('eng').addEventListener('click', function() {
+			  console.log("A");
+      restart();
+    });
+	    	document.getElementById('cn').addEventListener('click', function() {
+			  console.log("A");
+      restart();
     });
 		  
 		</script>

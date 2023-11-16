@@ -932,7 +932,7 @@ app.post('/startSimulation', async (req, res) => {
   console.log('File deleted successfully');
 });
 
- var prompt = `You are a ${req.query.target} in a conversation with an insurance officer about a scneario. The scenario can be something the target client faces on a daily basis for example if you are a young family, the scenario can be where you have a child and are asking about what life insurance they should purchase, Come up with an enquiry to the insurance officer, {chineseModifier}`
+ var prompt = `You are a ${req.query.target} in a conversation with an insurance officer about a scenario related to insurance. Come up with an enquiry to the insurance officer, {chineseModifier}`
 
 
 
@@ -942,7 +942,7 @@ app.post('/startSimulation', async (req, res) => {
            prompt = prompt.replace("{chineseModifier}", "");
     }
 
-  var result = await processPromptDataCustomToken(prompt,false,1000);
+  var result = await processPromptDataCustomTokenGPT4(prompt,false,1000);
 
 
 fs.writeFile(scriptPath, "You: "+result, 'utf8', (err) => {

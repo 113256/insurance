@@ -427,7 +427,7 @@ async function connect(){
 	
 	
 	uploadButton.style.display = 'None';
-	
+	console.log("LLL = "+language);
 	if (language == "Chinese"){
 		await talkCustom("我是您的智能保险助手。我可以如何协助您？");
 		updateConversation("","我是您的智能保险助手。我可以如何协助您？");
