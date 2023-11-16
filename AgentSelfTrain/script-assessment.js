@@ -20,8 +20,8 @@ function getCheckedCheckboxes() {
 
   });
   
-  let insuranceElements = values.filter(element => element.toLowerCase().includes("insurance") || element.includes("保险"));
-  let nonInsuranceElements = values.filter(element => !element.toLowerCase().includes("insurance") && !element.includes("保险"));
+  let insuranceElements = values.filter(element => element.toLowerCase().includes("construction") || element.toLowerCase().includes("insurance") || element.includes("保险"));
+  let nonInsuranceElements = values.filter(element => !element.toLowerCase().includes("construction") || !element.toLowerCase().includes("insurance") && !element.includes("保险"));
 
   // Check if there are at least 3 elements with "insurance" and 3 elements without
   if (insuranceElements.length >= 3 && nonInsuranceElements.length >= 3) {
@@ -127,7 +127,7 @@ formData.append('candidateAnswers', candidateAnswers);
 
         // Populate rows array with data from skillsData
     Object.keys(responseJSON).forEach(skill => {
-      if (skill.toLowerCase().includes('insurance') || skill.toLowerCase().includes('保险')) {
+      if (skill.toLowerCase().includes('construction') || skill.toLowerCase().includes('insurance') || skill.toLowerCase().includes('保险')) {
         skillsData2[skill] = responseJSON[skill];
       } else {
         skillsData[skill] = responseJSON[skill];
@@ -149,6 +149,8 @@ formData.append('candidateAnswers', candidateAnswers);
       var chart = anychart.radar();
       // set the chart data
       chart.data(chartData);
+      chart.yScale().minimum(0);
+      chart.yScale().maximum(5);
       // set the chart title
       chart.title("Overall Performance Analysis");
       // set the container id
@@ -176,6 +178,8 @@ formData.append('candidateAnswers', candidateAnswers);
       chart.data(chartData);
       // set the chart title
       chart.title("Product Knowledge");
+      chart.yScale().minimum(0);
+      chart.yScale().maximum(5);
       // set the container id
       chart.container('chart2');
       // display the radar chart
