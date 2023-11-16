@@ -340,8 +340,11 @@ uploadButton.onclick = async () => {
 
 
 export async function restart(){
+	try{
 		var hiddenElement = document.getElementById('speechBubble');
-    hiddenElement.style.display = 'None'; // Show the hidden element
+		    hiddenElement.style.display = 'None'; // Show the hidden element
+	}catch(e){}
+
 		clearChatHistory();
 	await destroy();
 
