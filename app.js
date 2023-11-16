@@ -348,6 +348,92 @@ function extractJSONString(response) {
 }
 
 
+async function processPromptDataCustomTokenGPT4(prompt, jsonFormat, max_tokens) {
+   fs.writeFileSync('prompt.txt', prompt);
+  console.log("Process prompt Data " +prompt);  
+
+ 
+  const maxRetries = 10; // You can adjust the number of retries as needed
+  let retryCount = 0;
+  let success = false;
+
+while (!success && retryCount < maxRetries) {
+  try {
+    
+  
+  var data;
+
+    const headers = {
+      "Content-Type": "application/json",
+      "api-key": "dc9c7f26d3b047a58ce8bfedd2db8eab"
+    };
+  if (jsonFormat){
+       data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      response_format:{"type": "json_object"},
+      temperature: 0,
+      max_tokens: max_tokens
+    });
+    
+  }else{
+    data = JSON.stringify({
+      messages: [{"role": "user", "content": prompt}],
+      temperature: 0,
+      max_tokens:max_tokens
+  });
+  }
+  const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/GPT-4-8k/chat/completions?api-version=2023-07-01-preview", {
+     method: "POST",
+     headers: headers,
+     body: data
+    });
+  //console.log(response);
+  const responseTxt = await response.text(); // to print errors etc...
+  console.log(responseTxt);
+    //const responseData = await response.json();
+        const responseData =  JSON.parse(responseTxt);
+        console.log(responseData);
+  //https://api.openai.com/v1/chat/completions
+  
+  
+  
+    console.log("RES:"+responseData.toString());
+
+    var responseContent = responseData.choices[0].message.content;
+  //https://api.openai.com/v1/chat/completions
+  
+  
+  
+    console.log("RES:"+responseData.toString());
+
+    var responseContent = responseData.choices[0].message.content;
+    //console.log("OLD = "+ responseContent);
+  
+  //responseContent = extractJSONString(responseContent);
+  //console.log("NEW "+responseContent);
+
+  
+  // If the above operations succeed, mark the process as successful
+    success = true;
+
+    // All data rows are inserted successfully
+    //return Promise.resolve();
+  return responseContent;
+  } catch (err) {
+    console.error('Error processing prompt data:', err);
+  await sleep(10000); // 5000 milliseconds = 5 seconds
+      retryCount++;
+    //throw err;
+  }
+}
+  if (!success) {
+    console.error('Failed after multiple retries. Aborting.');
+    // Optionally, you can throw an error here or perform any other action.
+    throw new Error('Failed after multiple retries. Aborting.');
+    }
+}
+
+
 async function processPromptDataCustomToken(prompt, jsonFormat, max_tokens) {
    fs.writeFileSync('prompt.txt', prompt);
   console.log("Process prompt Data " +prompt);  
@@ -797,13 +883,13 @@ app.post('/recommendTraining', async (req, res) => {
 	var trainType = req.query.trainType;
   var language = req.query.language;
 	
-	var prompt = "You are an professional insurance training assistant. Based on the clients chosen type of training: "+trainType+" and their experience and preferences: " + clientAnswer+".  Recommend 4 training classes for them. Give your answer in the following JSON format: [{'Name':'','Summary':''},{'Name':'','Summary':''},{'Name':'','Summary':''},{'Name':'','Summary':''}] {chineseModifier}"
+	var prompt = `You are an professional insurance training assistant. Based on the clients chosen type of training: "+trainType+" and their experience and preferences: " + clientAnswer+".  Recommend 4 training classes for them. Give your answer in the following JSON format: [{"Name":"","Summary":""},{"Name":"","Summary":""},{"Name":"","Summary":""},{"Name":"","Summary":""}] {chineseModifier}`
 if(language=="Chinese"){
   prompt = prompt.replace("{chineseModifier}", "Note that the JSON values MUST be in chinese.");
 } else {
   prompt = prompt.replace("{chineseModifier}", "");
 }
-	var result = await processPromptData(prompt,false);
+	var result = await processPromptDataCustomToken(prompt,false, 1000);
 	console.log(result);
 	result = result.match(/\[[\s\S]*\]/)[0];
 	return res.status(200).send(result);
@@ -829,7 +915,7 @@ app.post('/recommendPackages', async (req, res) => {
            prompt = prompt.replace("{chineseModifier}", "Note that the JSON values MUST be in english.");
     }
 
-	var result = await processPromptData(prompt,false);
+	var result = await processPromptDataCustomTokenGPT4(prompt,false,4000);
 	console.log(result);
 	result = result.match(/\[[\s\S]*\]/)[0];
 	return res.status(200).send(result);

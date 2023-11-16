@@ -89,6 +89,7 @@ function showQuiz(questionNumber){
      document.querySelector('label[for="option4"]').innerText = quizItems[questionNumber-1].Option4;
 
      if (questionNumber==10){
+          document.getElementById('next').style.display = 'None';
       document.getElementById('submit').style.display = '';
       //document.getElementById('next').style.display = 'None';
      }
@@ -246,6 +247,7 @@ async function generateQuiz(){
     showQuiz(1);
          document.getElementById('quizSpinner').style.display = 'None';
     document.getElementById('quiz').style.display = '';
+        document.getElementById('next').style.display = '';
     }
   }
 }
