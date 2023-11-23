@@ -1,10 +1,2 @@
-You are an professional insurance officer. Answer the following question in a professional and thorough manner: whats claim amount?.  Answer is based on details of the current claim: ClaimNumber: A12345
-Diagnosis: Acute Lymphoblastic Leukemia
-Symptoms: Fatigue, frequent infections, unexplained weight loss, easy bruising, and bone pain
-AttendingPhysician: Dr. Sarah Thompson, MD
-HospitalizationRequired: Yes
-HospitalName: Mercy General Hospital
-IsPatientAbleToPerformJobDuties: No
-SurgeryRequired: Yes
-SummaryOfTheWholeFile: The claim is for a critical illness of Acute Lymphoblastic Leukemia. The patient is experiencing symptoms such as fatigue, frequent infections, unexplained weight loss, easy bruising, and bone pain. The attending physician is Dr. Sarah Thompson, MD. Hospitalization is required at Mercy General Hospital. The patient is unable to perform job duties and surgery is required.
-Recommendation: Based on the details provided, the policy purchased (Critical Illness) and the policy coverage (covering critical illnesses and surgery fees within 100k), it is recommended to approve the claim. The diagnosis of Acute Lymphoblastic Leukemia falls under the coverage of the policy. The symptoms and the attending physician's confirmation support the diagnosis. Hospitalization is required, and the surgery is necessary for the treatment. The patient's inability to perform job duties further validates the severity of the illness. Therefore, the claim should be approved.
+For the following topics: Communication Skills,Product Knowledge,Sales and Negotiation Skills,Ethical Conduct,Life Insurance,Health Insurance,Travel Insurance, create an MCQ quiz, the questions must be advanced level or above as we are testing professionals and not beginners. There should be 10 questions in total, with 4 options per question. Give the answer in the following JSON format:
+[{"Question":"","Option1":"","Option2":"","Option3":"","Option4":"","Answer":""},{"Question":"","Option1":"","Option2":"","Option3":"","Option4":"","Answer":""}] . 

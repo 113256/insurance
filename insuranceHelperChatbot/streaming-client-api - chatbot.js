@@ -484,35 +484,55 @@ async function talkCustom(content) {
 	}
 	//voiceID = "en-US-JennyNeural";
 	
-	
-    talkResponse = await fetch(`${DID_API.url}/talks/streams/${streamId}`,
-      {
-        method: 'POST',
-        headers: { Authorization: `Basic ${DID_API.key}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          'script': {
-            "type": "text",
-                "provider": {
-                    "type": "microsoft",
-                    "voice_id": voiceID
-                },
-				"ssml": "false",
-                "input": content
-          },
-          'driver_url': 'bank://lively/',
-          'config': {
-            'stitch': true,
-          },
-          'session_id': sessionId
-        })
-      });  
+
+
+		  const maxRetries = 5; // You can adjust the number of retries as needed
+		  let retryCount = 0;
+		  let success = false;
+
+		while (!success && retryCount < maxRetries) {
+		  try {
+		  	console.log("TRY : "+retryCount.toString());
+	    talkResponse = await fetch(`${DID_API.url}/talks/streams/${streamId}`,
+	      {
+	        method: 'POST',
+	        headers: { Authorization: `Basic ${DID_API.key}`, 'Content-Type': 'application/json' },
+	        body: JSON.stringify({
+	          'script': {
+	            "type": "text",
+	                "provider": {
+	                    "type": "microsoft",
+	                    "voice_id": voiceID
+	                },
+					"ssml": "false",
+	                "input": content
+	          },
+	          'driver_url': 'bank://lively/',
+	          'config': {
+	            'stitch': true,
+	          },
+	          'session_id': sessionId
+	        })
+	      });  
+	        success = true;
+
+	    } catch (err) {
+		    console.error('Error processing prompt data:', err);
+		  // Using setTimeout to wait for 1 second (1000 milliseconds)
+setTimeout(function() {
+  // Code to execute after 1 second
+  console.log('Waited for 1 second');
+}, 3000); // 1000 milliseconds = 1 second
+		      retryCount++;
+		    //throw err;
+		  }
 	}
 	console.log(talkResponse);
 	
    
 	
 	}
-
+}
 
 	try{
 	var hiddenElement = document.getElementById('speechBubble');
@@ -874,6 +894,11 @@ function closePC(pc = peerConnection) {
 }
 async function main()
 {
+	// Using setTimeout to wait for 1 second (1000 milliseconds)
+		setTimeout(function() {
+		  // Code to execute after 1 second
+		  console.log('Waited for 1 second');
+		}, 3000); // 1000 milliseconds = 1 second			
 	//await uploadImg();
 	await connect();
 
