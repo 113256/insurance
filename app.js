@@ -695,7 +695,8 @@ while (!success && retryCount < maxRetries) {
       max_tokens:4000
   });
   }
-  const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/gpt-3-turbo/chat/completions?api-version=2023-07-01-preview", {
+  //const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/gpt-3-turbo/chat/completions?api-version=2023-07-01-preview", {
+	  const response = await fetch("https://innovationhub-gpt4.openai.azure.com/openai/deployments/gpt-35-turbo-16k/chat/completions?api-version=2023-07-01-preview", {
      method: "POST",
      headers: headers,
      body: data
